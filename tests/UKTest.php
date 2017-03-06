@@ -5,6 +5,7 @@
     */
 
     require_once "src/UK.php";
+    require_once "src/US.php";
 
     $server = "mysql:host=localhost:8889;dbname=translator_test";
     $username = "root";
@@ -16,6 +17,7 @@
         function tearDown()
         {
             UK_word::deleteAll();
+            US::deleteAll();
         }
         function test_getName()
         {
@@ -172,20 +174,21 @@
             $word = "truck";
             $definition = "a large car that carries things";
             $example = "the truck obstructs my view";
-            $region = "US";
-
-            $new_us_word = new US_word($word, $definition, $example, $region);
+            $new_us_word = new US($word, $definition, $example);
             $new_us_word->save();
 
             $word = "18 wheeler";
             $definition = "a large car that carries things";
             $example = "the truck obstructs my view";
-            $region = "US";
-            $new_us_word = new US_word($word, $definition, $example, $region);
-            $new_us_word->save();
+            $new_us_word2 = new US($word, $definition, $example);
+            $new_us_word2->save();
 
-            //Act
-            $this->assertEquals($new_us_word, $result);
+            $us_word_id = $new_us_word->getId();
+            $new_word->addUSWord($us_word_id);
+            $result = $new_word->getUSWord();
+
+            //Assert
+            $this->assertEquals($new_us_word, $result[0]);
         }
 
     }

@@ -126,25 +126,25 @@ class UK_word
 
     function addUSWord($us_id)
     {
-        $GLOBALS['DB']->exec("INSERT INTO UK_US (uk_id, us_id) VALUES ({$this->getId()}, {$us_id};");
+        $GLOBALS['DB']->exec("INSERT INTO UK_US (UK_id, US_id) VALUES ({$this->getId()}, {$us_id});");
     }
 
     function getUSWord()
     {
-        $returned_words = $GLOBALS['DB']->query("SELECT us_words.* FROM uk_us
-        JOIN us_words ON (us_words.id = uk_us.us_id)
-        JOIN uk_us ON (uk_us.uk_id = uk_words.id)
-        WHERE uk_words.id = {$this->getId});");
+        $returned_words = $GLOBALS['DB']->query("SELECT US_words.* FROM UK_words
+        JOIN UK_US ON (UK_words.id = UK_US.uk_id)
+        JOIN US_words ON (UK_US.us_id = US_words.id)
+        WHERE UK_words.id = {$this->getId()};");
         $matches = array();
         foreach($returned_words as $word)
         {
             $id = $word['id'];
-            $word = $word['word'];
+            $this_word = $word['word'];
             $example = $word['example'];
             $region = $word['region'];
             $definition = $word['definition'];
-            $new_word = new UK_word($id, $word, $example, $region, $definition);
-            array_push($matches, $new_word);
+            $word = new US($this_word, $definition, $example, $region, $id);
+            array_push($matches, $word);
         }
         return $matches;
     }
