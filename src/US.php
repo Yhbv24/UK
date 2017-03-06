@@ -40,5 +40,10 @@
         {
             return $this->id;
         }
+
+        function setWord()
+        {
+            
+        }
     }
  ?>
