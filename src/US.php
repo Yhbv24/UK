@@ -90,5 +90,11 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM us_words;");
         }
+
+        function update($property, $value)
+        {
+            $GLOBALS['DB']->exec("UPDATE us_words SET {$property} = {$value} WHERE id = {$this->id};");
+            $this->$property = $value;
+        }
     }
  ?>
