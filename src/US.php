@@ -16,6 +16,8 @@
             $this->id = $id;
         }
 
+
+        // GETTERS AND SETTERS
         function getWord()
         {
             return $this->word;
@@ -59,6 +61,34 @@
         function setRegion($new_region)
         {
             $this->region = (string)$new_region;
+        }
+
+        function save()
+        {
+            $new_US = $GLOBALS['DB']->exec("INSERT INTO us_words (word, definition, example) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+
+        }
+
+        static function getAll()
+        {
+            $usWords = $GLOBALS['DB']->query("SELECT * FROM us_words;");
+            $word_array = array();
+            foreach($usWords as $usWord) {
+                $word = $usWord['word'];
+                $definition = $usWord['definition'];
+                $example = $usWord['example'];
+                $region = $usWord['region'];
+                $id = $usWord['id'];
+                $new_us = new US($word, $definition, $example, $region, $id);
+                array_push($word_array, $new_us);
+            }
+            return $word_array;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM us_words;");
         }
     }
  ?>

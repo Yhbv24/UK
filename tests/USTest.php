@@ -13,6 +13,12 @@
     class USTest extends PHPUnit_Framework_TestCase
 
     {
+        protected function tearDown()
+        {
+            US::deleteAll();
+        }
+
+        // GETTERS AND SETTERS TESTS
         function testGetWord()
         {
             $word = "suspenders";
@@ -139,6 +145,59 @@
             $result = $test_US->getRegion();
 
             $this->assertEquals($new_region, $result);
+        }
+
+        function testSave()
+        {
+            $word = "suspenders";
+            $definition = "Elastic straps that hold up pants.";
+            $example = "He had suspenders holding up his pants instead of a belt.";
+            $test_US = new US($word, $definition, $example);
+
+            $test_US->save();
+            $result = US::getAll();
+
+            $this->assertEquals([$test_US], $result);
+        }
+
+        function testGetAll()
+        {
+            $word = "Coke";
+            $definition = "Any sweet carbonated beverage.";
+            $example = "He had a grape coke with his burger.";
+            $test_US = new US($word, $definition, $example);
+            $test_US->save();
+
+            $word2 = "suspenders";
+            $definition2 = "Elastic straps that hold up pants.";
+            $example2 = "He had suspenders holding up his pants instead of a belt.";
+            $test_US2 = new US($word2, $definition2, $example2);
+            $test_US2->save();
+
+            $result = US::getAll();
+
+            $this->assertEquals([$test_US, $test_US2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            $word = "Coke";
+            $definition = "Any sweet carbonated beverage.";
+            $example = "He had a grape coke with his burger.";
+            $region = "South";
+            $test_US = new US($word, $definition, $example, $region);
+            $test_US->save();
+
+            $word2 = "suspenders";
+            $definition2 = "Elastic straps that hold up pants.";
+            $example2 = "He had suspenders holding up his pants instead of a belt.";
+            $test_US2 = new US($word2, $definition2, $example2);
+            $test_US2->save();
+
+            US::deleteAll();
+            $result = US::getAll();
+
+            $this->assertEquals([], $result);
         }
     }
 
