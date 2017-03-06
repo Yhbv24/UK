@@ -109,5 +109,19 @@ class UK_word
     {
         $GLOBALS['DB']->exec("DELETE FROM uk_words WHERE id = {$this->getId()};");
     }
+
+    function find($search_id)
+    {
+        $found_word = null;
+        $words = UK_word::getAll();
+        foreach ($words as $word) {
+            $word_id = $this->getId();
+            if($word_id == $search_id){
+                $search_id = $found_word;
+            }
+            return $found_word;
+        }
+
+    }
 }
  ?>

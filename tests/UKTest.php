@@ -134,5 +134,31 @@
             //Assert
             $this->assertEquals([], $result);
         }
+
+        function test_find()
+        {
+            //Arrange
+            $word = "lorry";
+            $definition = "a large car that carries things";
+            $example = "the lorry obstructs my view";
+            $region = "UK";
+            $new_word = new UK_word($word, $definition, $example, $region);
+            $new_word->save();
+
+            $word2 = "lorry";
+            $definition2 = "a large car that carries things";
+            $example2 = "the lorry obstructs my view";
+            $region2 = "UK";
+            $new_word2 = new UK_word($word2, $definition2, $example2, $region2);
+            $new_word2->save();
+
+            //Act
+            $result= $new_word->getId();
+
+            //Assert
+            $this->assertEquals($new_word->getId(), $result);
+
+        }
+
     }
  ?>
