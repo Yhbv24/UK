@@ -109,6 +109,21 @@
 
             $this->assertEquals($new_definition, $result);
         }
+
+        function testSetExample()
+        {
+            $word = "suspender";
+            $definition = "Elastic straps that hold up pants.";
+            $example = "He had rainbow-colored suspenders holding up his pants instead of a belt.";
+            $test_US = new US($word, $definition, $example);
+            $new_example = "rainbow-colored";
+
+
+            $test_US->setExample('$new_example');
+            $result = $test_US->getExample();
+            $this->assertEquals($new_example, $result);
+
+        }
     }
 
 

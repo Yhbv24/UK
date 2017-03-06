@@ -50,5 +50,7 @@
         {
             $this->definition = (string)$new_definition;
         }
+
+        function setExample()
     }
  ?>
