@@ -1,0 +1,32 @@
+wr<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>British/American translator</title>
+    </head>
+    <body>
+        {% block header %}
+            <div class="jumbotron">
+                <h1>British/American Translator</h1>
+            </div>
+        {% endblock %}
+        {% block body %}
+            <div class="container">
+                <form action="/" method="post">
+                    <label for="uk_word">Search by UK word</label>
+                    <input type="text" name="uk_word">
+                    <button type="submit">Search</button>
+                </form>
+
+                {% if uk_words is not empty %}
+                    {% for word in uk_words %}
+                    <li>{{word.getWord}}</li>
+                    <li>{{word.getDefinition}}</li>
+                    <li>{{word.getExample}}</li>
+                    <li>{{word.getRegion}}</li>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endblock %}
+    </body>
+</html>
