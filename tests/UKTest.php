@@ -27,6 +27,7 @@
             // Assert
             $this->assertEquals($word, $result);
         }
+
         function test_getDefinition()
         {
             // Arrange
@@ -41,6 +42,7 @@
             // Assert
             $this->assertEquals($definition, $result);
         }
+
         function test_getExample()
         {
             // Arrange
@@ -54,6 +56,23 @@
 
             // Assert
             $this->assertEquals($example, $result);
+        }
+
+        function test_setExample()
+        {
+            // Arrange
+            $word = "lorry";
+            $definition = "a large car that carries things";
+            $example = "the lorry obstructs my view";
+            $new_word = new UK_word($word, $definition, $example);
+
+            // Act
+            $new_example = "there is a large lorry in my way";
+            $new_word->setExample($new_example);
+            $result = $new_word->getExample();
+
+            // Assert
+            $this->assertEquals($new_example, $result);
         }
     }
  ?>
