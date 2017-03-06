@@ -124,6 +124,22 @@
             $this->assertEquals($new_example, $result);
 
         }
+
+        function testSetRegion()
+        {
+            $word = "Coke";
+            $definition = "Any sweet carbonated beverage.";
+            $example = "He had a grape coke with his burger.";
+            $region = "South";
+            $test_US = new US($word, $definition, $example, $region);
+
+            $new_region = "Southeast";
+
+            $testUS->setRegion($new_region);
+            $result = $testUS->getRegion();
+
+            $this->assertEquals($new_region, $result);
+        }
     }
 
 
