@@ -23,7 +23,7 @@
 
         function getDefinition()
         {
-
+            return $this->definition;
         }
 
         function getExample()
