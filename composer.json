@@ -1,7 +1,11 @@
 {
     "require": {
         "silex/silex": "~1.1",
+<<<<<<< HEAD
+        "twig/twig":"~1.0",
+=======
         "twig/twig": "~1.0",
+>>>>>>> 72dbf4f37165e2346efc76c6bb4086fab8d63057
         "phpunit/phpunit": "4.5.*"
     }
 }
