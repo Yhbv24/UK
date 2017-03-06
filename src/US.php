@@ -1,5 +1,5 @@
 <?php
-    class US
+    class US_word
     {
         private $word;
         private $definition;
@@ -80,7 +80,7 @@
                 $example = $usWord['example'];
                 $region = $usWord['region'];
                 $id = $usWord['id'];
-                $new_us = new US($word, $definition, $example, $region, $id);
+                $new_us = new US_word($word, $definition, $example, $region, $id);
                 array_push($word_array, $new_us);
             }
             return $word_array;
@@ -97,9 +97,45 @@
             $this->$property = $value;
         }
 
-        function findUKword()
+        static function find($id)
         {
-            
+            $returned_US_words = $GLOBALS['DB']->query("SELECT * FROM us_words WHERE id={$id};");
+
+
+            foreach($returned_US_words as $us_word){
+                $word = $us_word['word'];
+                $definition = $us_word['definition'];
+                $example = $us_word['example'];
+                $region = $us_word['region'];
+                $id = $us_word['id'];
+                $new_us_word = new US_word($word, $definition, $example, $region, $id);
+            }
+            return $new_us_word;
+        }
+
+        function addUKWord($uk_id)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO UK_US (uk_id, us_id) VALUES ({$uk_id}, {$this->id});");
+
+        }
+
+        function getUKWords()
+        {
+            $returned_words = $GLOBALS['DB']->query("SELECT uk_words.* FROM us_words
+            JOIN uk_us ON (us_words.id = uk_us.us_id)
+            JOIN uk_words ON(uk_us.uk_id = uk_words.id)
+            WHERE us_words.id = {$this->getId()};");
+            $matches = array();
+            foreach($returned_words as $uk_word) {
+                $word = $uk_word['word'];
+                $definition = $uk_word['definition'];
+                $example = $uk_word['example'];
+                $region = $uk_word['region'];
+                $id = $uk_word['id'];
+                $new_UK = new UK_word($word, $definition, $example, $region, $id);
+                array_push($matches, $new_UK);
+            }
+            return $matches;
         }
     }
  ?>

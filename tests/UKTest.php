@@ -5,7 +5,8 @@
     */
 
     require_once "src/UK.php";
-    require_once "src/US.php";
+    require_once"src/US.php";
+
 
     $server = "mysql:host=localhost:8889;dbname=translator_test";
     $username = "root";
@@ -17,7 +18,8 @@
         function tearDown()
         {
             UK_word::deleteAll();
-            US::deleteAll();
+            US_word::deleteAll();
+
         }
         function test_getName()
         {
@@ -161,6 +163,7 @@
             $this->assertEquals($new_word->getId(), $result);
 
         }
+
 
         function test_findUSWord()
         {

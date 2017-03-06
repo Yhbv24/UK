@@ -4,6 +4,7 @@
     * @backupStaticAttributes disabled
     */
     require_once "src/US.php";
+    require_once "src/UK.php";
 
     $server = 'mysql:host=localhost:8889;dbname=translator_test';
     $username = 'root';
@@ -15,7 +16,8 @@
     {
         protected function tearDown()
         {
-            US::deleteAll();
+            US_word::deleteAll();
+            UK_word::deleteAll();
         }
 
         // GETTERS AND SETTERS TESTS
@@ -24,7 +26,7 @@
             $word = "suspenders";
             $definition = "Elastic straps that hold up pants.";
             $example = "He had rainbow-colored suspenders holding up his pants instead of a belt.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
 
             $result = $test_US->getWord();
 
@@ -37,7 +39,7 @@
             $word = "suspenders";
             $definition = "Elastic straps that hold up pants.";
             $example = "He had rainbow-colored suspenders holding up his pants instead of a belt.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
 
             $result = $test_US->getDefinition();
 
@@ -50,7 +52,7 @@
             $word = "suspenders";
             $definition = "Elastic straps that hold up pants.";
             $example = "He had rainbow-colored suspenders holding up his pants instead of a belt.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
 
             $result = $test_US->getExample();
 
@@ -64,7 +66,7 @@
             $definition = "Any sweet carbonated beverage.";
             $example = "He had a grape coke with his burger.";
             $region = "South";
-            $test_US = new US($word, $definition, $example, $region);
+            $test_US = new US_word($word, $definition, $example, $region);
 
             $result = $test_US->getRegion();
 
@@ -79,7 +81,7 @@
             $definition = "Any sweet carbonated beverage.";
             $example = "He had a grape coke with his burger.";
             $region = "South";
-            $test_US = new US($word, $definition, $example, $region, $id);
+            $test_US = new US_word($word, $definition, $example, $region, $id);
 
             $result = $test_US->getId();
 
@@ -91,7 +93,7 @@
             $word = "suspender";
             $definition = "Elastic straps that hold up pants.";
             $example = "He had rainbow-colored suspenders holding up his pants instead of a belt.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
             $new_word = "suspenders";
 
             $test_US->setWord($new_word);
@@ -106,7 +108,7 @@
             $word = "suspender";
             $definition = "Elastic straps that hold up pants.";
             $example = "He had rainbow-colored suspenders holding up his pants instead of a belt.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
 
             $new_definition = "Cables for construction";
 
@@ -121,7 +123,7 @@
             $word = "suspender";
             $definition = "Elastic straps that hold up pants.";
             $example = "He had rainbow-colored suspenders holding up his pants instead of a belt.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
             $new_example = "rainbow-colored";
 
 
@@ -137,7 +139,7 @@
             $definition = "Any sweet carbonated beverage.";
             $example = "He had a grape coke with his burger.";
             $region = "South";
-            $test_US = new US($word, $definition, $example, $region);
+            $test_US = new US_word($word, $definition, $example, $region);
 
             $new_region = "Southeast";
 
@@ -152,10 +154,10 @@
             $word = "suspenders";
             $definition = "Elastic straps that hold up pants.";
             $example = "He had suspenders holding up his pants instead of a belt.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
 
             $test_US->save();
-            $result = US::getAll();
+            $result = US_word::getAll();
 
             $this->assertEquals([$test_US], $result);
         }
@@ -165,16 +167,16 @@
             $word = "Coke";
             $definition = "Any sweet carbonated beverage.";
             $example = "He had a grape coke with his burger.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
             $test_US->save();
 
             $word2 = "suspenders";
             $definition2 = "Elastic straps that hold up pants.";
             $example2 = "He had suspenders holding up his pants instead of a belt.";
-            $test_US2 = new US($word2, $definition2, $example2);
+            $test_US2 = new US_word($word2, $definition2, $example2);
             $test_US2->save();
 
-            $result = US::getAll();
+            $result = US_word::getAll();
 
             $this->assertEquals([$test_US, $test_US2], $result);
         }
@@ -185,17 +187,17 @@
             $definition = "Any sweet carbonated beverage.";
             $example = "He had a grape coke with his burger.";
             $region = "South";
-            $test_US = new US($word, $definition, $example, $region);
+            $test_US = new US_word($word, $definition, $example, $region);
             $test_US->save();
 
             $word2 = "suspenders";
             $definition2 = "Elastic straps that hold up pants.";
             $example2 = "He had suspenders holding up his pants instead of a belt.";
-            $test_US2 = new US($word2, $definition2, $example2);
+            $test_US2 = new US_word($word2, $definition2, $example2);
             $test_US2->save();
 
-            US::deleteAll();
-            $result = US::getAll();
+            US_word::deleteAll();
+            $result = US_word::getAll();
 
             $this->assertEquals([], $result);
         }
@@ -205,7 +207,7 @@
             $word = "suspenders";
             $definition = "Elastic straps that hold up pants.";
             $example = "He had suspenders holding up his pants instead of a belt.";
-            $test_US = new US($word, $definition, $example);
+            $test_US = new US_word($word, $definition, $example);
             $test_US->save();
             $update_word = "truck";
 
@@ -215,27 +217,50 @@
             $this->assertEquals($update_word, $result);
         }
 
-        // function testFind()
-        // {
-        //     $word = "suspenders";
-        //     $definition = "Elastic straps that hold up pants.";
-        //     $example = "He had suspenders holding up his pants instead of a belt.";
-        //     $new_US = new US($word, $definition, $example);
-        //     $new_US->save();
-        //
-        //     $word2 = "truck";
-        //     $definition2 = "Big vehicle for transporting goods.";
-        //     $example2 = "He drove a truck for amazon deliveries.";
-        //     $new_US2 = new US($word2, $definition2, $example2);
-        //     $new_US2->save();
-        //
-        //     $us_id = $new_US->getId();
-        //     $result = US::find($us_id);
-        //
-        //     $this->assertEquals($new_US, $result);
-        //
-        //
-        // }
+
+        function testFind()
+        {
+            $word = "suspenders";
+            $definition = "Elastic straps that hold up pants.";
+            $example = "He had suspenders holding up his pants instead of a belt.";
+            $new_US = new US_word($word, $definition, $example);
+            $new_US->save();
+
+            $word2 = "truck";
+            $definition2 = "Big vehicle for transporting goods.";
+            $example2 = "He drove a truck for amazon deliveries.";
+            $new_US2 = new US_word($word2, $definition2, $example2);
+            $new_US2->save();
+
+            $us_id = $new_US->getId();
+            $result = US_word::find($us_id);
+
+            $this->assertEquals($new_US, $result);
+        }
+
+        function testGetAndAddUkWords()
+        {
+            $word = "suspenders";
+            $definition = "Elastic straps that hold up pants.";
+            $example = "He had suspenders holding up his pants instead of a belt.";
+            $new_US = new US_word($word, $definition, $example);
+            $new_US->save();
+
+            $word2 = "braces";
+            $definition2 = "Elastic straps that hold up trousers.";
+            $example2 = "He had braces holding up his trousers instead of a belt.";
+            $new_UK = new UK_word($word2, $definition2, $example2);
+            $new_UK->save();
+
+
+            $new_US->addUKWord($new_UK->getId());
+
+            $result = $new_US->getUKWords();
+
+            $this->assertEquals($new_UK, $result[0]);
+        }
+
+
     }
 
 
