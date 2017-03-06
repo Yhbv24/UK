@@ -94,6 +94,21 @@
 
             $this->assertEquals($new_word, $result);
         }
+
+        function testSetDefinition()
+        {
+            $word = "suspender";
+            $definition = "Elastic straps that hold up pants.";
+            $example = "He had rainbow-colored suspenders holding up his pants instead of a belt.";
+            $test_US = new US($word, $definition, $example);
+
+            $new_definition = "Cables for construction";
+
+            $test_US->setDefinition($new_definition);
+            $result = $test_US->getDefinition();
+
+            $this->assertEquals($new_definition, $result);
+        }
     }
 
 

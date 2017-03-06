@@ -45,5 +45,10 @@
         {
             $this->word = (string)$new_word;
         }
+
+        function setDefinition($new_definition)
+        {
+
+        }
     }
  ?>
