@@ -65,6 +65,20 @@
             $this->assertEquals($region, $result);
 
         }
+
+        function testGetId()
+        {
+            $id = 1;
+            $word = "Coke";
+            $definition = "Any sweet carbonated beverage.";
+            $example = "He had a grape coke with his burger.";
+            $region = "South";
+            $test_US = new US($word, $definition, $example, $region, $id);
+
+            $result = $test_US->getId();
+
+            $this->assertEquals($id, $result);
+        }
     }
 
 

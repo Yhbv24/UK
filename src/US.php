@@ -36,9 +36,9 @@
             return $this->region;
         }
 
-        function setId()
+        function getId()
         {
-
+            return $this->id;
         }
     }
  ?>
