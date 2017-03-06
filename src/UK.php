@@ -104,5 +104,10 @@ class UK_word
         $this->setDefinition($new_definition);
         }
     }
+
+    function delete()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM uk_words WHERE id = {$this->getId()};");
+    }
 }
  ?>

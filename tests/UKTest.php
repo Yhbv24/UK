@@ -116,5 +116,23 @@
             //Assert
             $this->assertEquals($new_word, $result[0]);
         }
+
+        function test_delete()
+        {
+            //Arrange
+            $word = "lorry";
+            $definition = "a large car that carries things";
+            $example = "the lorry obstructs my view";
+            $region = "UK";
+            $new_word = new UK_word($word, $definition, $example, $region);
+            $new_word->save();
+
+            //Act
+            $new_word->delete();
+            $result = UK_word::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
     }
  ?>
