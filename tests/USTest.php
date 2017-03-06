@@ -214,6 +214,28 @@
 
             $this->assertEquals($update_word, $result);
         }
+
+        function testFind()
+        {
+            $word = "suspenders";
+            $definition = "Elastic straps that hold up pants.";
+            $example = "He had suspenders holding up his pants instead of a belt.";
+            $new_US = new US($word, $definition, $example);
+            $new_US->save();
+
+            $word2 = "truck";
+            $definition2 = "Big vehicle for transporting goods.";
+            $example2 = "He drove a truck for amazon deliveries.";
+            $new_US2 = new US($word2, $definition2, $example2);
+            $new_US2->save();
+
+            $us_id = $new_US->getId();
+            $result = US::find($us_id);
+
+            $this->assertEquals($new_US, $result);
+
+
+        }
     }
 
 

@@ -96,5 +96,10 @@
             $GLOBALS['DB']->exec("UPDATE us_words SET {$property} = {$value} WHERE id = {$this->id};");
             $this->$property = $value;
         }
+
+        function findUKword()
+        {
+            
+        }
     }
  ?>
