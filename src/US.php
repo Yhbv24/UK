@@ -28,7 +28,7 @@
 
         function getExample()
         {
-
+            return $this->example;
         }
 
         function getRegion()
