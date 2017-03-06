@@ -33,7 +33,7 @@
 
         function getRegion()
         {
-            
+            return $this->region;
         }
 
         function setId()
