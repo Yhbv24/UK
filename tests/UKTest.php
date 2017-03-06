@@ -160,5 +160,22 @@
 
         }
 
+        function test_findUSWord()
+        {
+            $word = "lorry";
+            $definition = "a large car that carries things";
+            $example = "the lorry obstructs my view";
+            $region = "UK";
+            $new_word = new UK_word($word, $definition, $example, $region);
+            $new_word->save();
+
+            $word = "truck";
+            $definition = "a large car that carries things";
+            $example = "the truck obstructs my view";
+            $region = "US";
+            $new_word = new US_word($word, $definition, $example, $region);
+            $new_us_word->save();
+        }
+
     }
  ?>
