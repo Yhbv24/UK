@@ -41,9 +41,9 @@
             return $this->id;
         }
 
-        function setWord()
+        function setWord($new_word)
         {
-            
+            $this->word = (string)$new_word;
         }
     }
  ?>
