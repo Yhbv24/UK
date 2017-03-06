@@ -4,6 +4,7 @@
     * @backupStaticAttributes disabled
     */
     require_once "src/US.php";
+    require_once "src/UK.php";
 
     $server = 'mysql:host=localhost:8889;dbname=translator_test';
     $username = 'root';
@@ -16,6 +17,7 @@
         protected function tearDown()
         {
             US::deleteAll();
+            UK::deleteAll();
         }
 
         // GETTERS AND SETTERS TESTS
@@ -233,9 +235,32 @@
             $result = US::find($us_id);
 
             $this->assertEquals($new_US, $result);
-
-
         }
+
+        function testGetAndAddUkWords()
+        {
+            $word = "suspenders";
+            $definition = "Elastic straps that hold up pants.";
+            $example = "He had suspenders holding up his pants instead of a belt.";
+            $id = null;
+            $new_US = new US($word, $definition, $example,$id);
+            $new_US->save();
+
+            $word2 = "suspenders";
+            $definition2 = "Elastic straps that hold up pants.";
+            $example2 = "He had suspenders holding up his pants instead of a belt.";
+            $id2 = null;
+            $new_UK = new UK($word2, $definition2, $example2, $id2);
+            $new_UK->save();
+
+
+            $new_US->addUKWord($new_UK->getId());
+
+            $result = $newUS->getUKWords();
+
+            $this->assertEquals($new_UK, $result);
+        }
+
     }
 
 
