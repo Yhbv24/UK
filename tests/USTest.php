@@ -135,8 +135,8 @@
 
             $new_region = "Southeast";
 
-            $testUS->setRegion($new_region);
-            $result = $testUS->getRegion();
+            $test_US->setRegion($new_region);
+            $result = $test_US->getRegion();
 
             $this->assertEquals($new_region, $result);
         }

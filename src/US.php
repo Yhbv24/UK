@@ -55,5 +55,10 @@
         {
             $this->example = (string)$new_example;
         }
+
+        function setRegion($new_region)
+        {
+            $this->region = (string)$new_region;
+        }
     }
  ?>
