@@ -48,7 +48,7 @@
 
         function setDefinition($new_definition)
         {
-
+            $this->definition = (string)$new_definition;
         }
     }
  ?>
