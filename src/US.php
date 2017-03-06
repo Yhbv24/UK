@@ -51,6 +51,9 @@
             $this->definition = (string)$new_definition;
         }
 
-        function setExample()
+        function setExample($new_example)
+        {
+            $this->example = (string)$new_example;
+        }
     }
  ?>

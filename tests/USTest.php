@@ -119,7 +119,7 @@
             $new_example = "rainbow-colored";
 
 
-            $test_US->setExample('$new_example');
+            $test_US->setExample($new_example);
             $result = $test_US->getExample();
             $this->assertEquals($new_example, $result);
 
