@@ -1,18 +1,22 @@
 <?php
-    /*
-    /** @backupGlobals disabled
-    /** @backupStaticAttributes disabled
+    /**
+    * @backupGlobals disabled
+    * @backupStaticAttributes disabled
     */
 
     require_once "src/UK.php";
 
     $server = "mysql:host=localhost:8889;dbname=translator_test";
-    $username = "user";
-    $password = "user";
+    $username = "root";
+    $password = "root";
     $DB = new PDO($server, $username, $password);
 
     class UKTest extends PHPUnit_Framework_TestCase
     {
+        // function tearDown()
+        // {
+        //     UK_word::deleteAll();
+        // }
         function test_getName()
         {
             // Arrange
@@ -73,6 +77,22 @@
 
             // Assert
             $this->assertEquals($new_example, $result);
+        }
+
+        function test_Save()
+        {
+            // Arrange
+            $word = "lorry";
+            $definition = "a large car that carries things";
+            $example = "the lorry obstructs my view";
+            $new_word = new UK_word($word, $definition, $example);
+            $new_word->save();
+
+            // Act
+            $result = UK_word::getAll();
+
+            // Assert
+            $this->assertEquals($new_word, $result[0]);
         }
     }
  ?>

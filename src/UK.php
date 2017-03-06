@@ -57,5 +57,32 @@ class UK_word
     {
          $this->id = $id;
     }
+    function save()
+    {
+        $GLOBALS['DB']->exec("INSERT INTO uk_words (word, definition, example, region) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}', '{$this->getRegion()}');");
+        $this->id = $GLOBALS['DB']->lastInsertId();
+    }
+    static function getAll()
+    {
+        $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words;");
+        $words = array();
+
+        foreach ($returned_words as $uk_word) {
+            $word = $uk_word["word"];
+            $definition = $uk_word["definition"];
+            $example = $uk_word["example"];
+            $region = $uk_word["region"];
+            $id = $uk_word["id"];
+            $uk_word = new UK_word($word, $definition, $example, $region, $id);
+            array_push($words, $uk_word);
+        }
+
+        return $words;
+    }
+
+    static function deleteAll()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM uk_words;");
+    }
 }
  ?>
