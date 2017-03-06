@@ -13,10 +13,10 @@
 
     class UKTest extends PHPUnit_Framework_TestCase
     {
-        // function tearDown()
-        // {
-        //     UK_word::deleteAll();
-        // }
+        function tearDown()
+        {
+            UK_word::deleteAll();
+        }
         function test_getName()
         {
             // Arrange
@@ -92,6 +92,28 @@
             $result = UK_word::getAll();
 
             // Assert
+            $this->assertEquals($new_word, $result[0]);
+        }
+
+        function test_update()
+        {
+            // Arrange
+            $word = "lorry";
+            $definition = "a large car that carries things";
+            $example = "the lorry obstructs my view";
+            $region = "UK";
+            $new_word = new UK_word($word, $definition, $example, $region);
+            $new_word->save();
+
+            // Act
+            $update_word = "lolly";
+            $update_definition ="candy";
+            $update_example = "this lolly tastes good";
+            $update_region = "UK";
+            $new_word->update($update_word, $update_definition, $update_example, $update_region);
+            $result = UK_word::getAll();
+
+            //Assert
             $this->assertEquals($new_word, $result[0]);
         }
     }

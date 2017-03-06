@@ -84,5 +84,25 @@ class UK_word
     {
         $GLOBALS['DB']->exec("DELETE FROM uk_words;");
     }
+
+    function update($new_word, $new_definition, $new_example, $new_region)
+    {
+        if($new_word){
+        $GLOBALS['DB']->exec("UPDATE uk_words SET word = '{$new_word}' WHERE id = {$this->getId()};");
+        $this->setWord($new_word);
+        }
+        if($new_region){
+        $GLOBALS['DB']->exec("UPDATE uk_words SET region = '{$new_region}' WHERE id = {$this->getId()};");
+        $this->setRegion($new_region);
+        }
+        if($new_example){
+        $GLOBALS['DB']->exec("UPDATE uk_words SET example = '{$new_example}' WHERE id = {$this->getId()};");
+        $this->setExample($new_example);
+        }
+        if($new_definition){
+        $GLOBALS['DB']->exec("UPDATE uk_words SET definition = '{$new_definition}' WHERE id = {$this->getId()};");
+        $this->setDefinition($new_definition);
+        }
+    }
 }
  ?>
