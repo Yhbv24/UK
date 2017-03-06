@@ -199,6 +199,21 @@
 
             $this->assertEquals([], $result);
         }
+
+        function testUpdate()
+        {
+            $word = "suspenders";
+            $definition = "Elastic straps that hold up pants.";
+            $example = "He had suspenders holding up his pants instead of a belt.";
+            $test_US = new US($word, $definition, $example);
+            $test_US->save();
+            $update_word = "truck";
+
+            $test_US->update('word', $update_word );
+            $result = $test_US->getWord();
+
+            $this->assertEquals($update_word, $result);
+        }
     }
 
 
