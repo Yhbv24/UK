@@ -5,6 +5,7 @@
     */
 
     require_once "src/UK.php";
+    require_once"src/US.php";
 
     $server = "mysql:host=localhost:8889;dbname=translator_test";
     $username = "root";
@@ -16,6 +17,7 @@
         function tearDown()
         {
             UK_word::deleteAll();
+            US_word::deleteAll();
         }
         function test_getName()
         {
@@ -160,33 +162,33 @@
 
         }
 
-        function test_findUSWord()
-        {
-            $word = "lorry";
-            $definition = "a large car that carries things";
-            $example = "the lorry obstructs my view";
-            $region = "UK";
-            $new_word = new UK_word($word, $definition, $example, $region);
-            $new_word->save();
-
-            $word = "truck";
-            $definition = "a large car that carries things";
-            $example = "the truck obstructs my view";
-            $region = "US";
-
-            $new_us_word = new US_word($word, $definition, $example, $region);
-            $new_us_word->save();
-
-            $word = "18 wheeler";
-            $definition = "a large car that carries things";
-            $example = "the truck obstructs my view";
-            $region = "US";
-            $new_us_word = new US_word($word, $definition, $example, $region);
-            $new_us_word->save();
-
-            //Act
-            $this->assertEquals($new_us_word, $result);
-        }
+        // function test_findUSWord()
+        // {
+        //     $word = "lorry";
+        //     $definition = "a large car that carries things";
+        //     $example = "the lorry obstructs my view";
+        //     $region = "UK";
+        //     $new_word = new UK_word($word, $definition, $example, $region);
+        //     $new_word->save();
+        //
+        //     $word = "truck";
+        //     $definition = "a large car that carries things";
+        //     $example = "the truck obstructs my view";
+        //     $region = "US";
+        //
+        //     $new_us_word = new US_word($word, $definition, $example, $region);
+        //     $new_us_word->save();
+        //
+        //     $word = "18 wheeler";
+        //     $definition = "a large car that carries things";
+        //     $example = "the truck obstructs my view";
+        //     $region = "US";
+        //     $new_us_word = new US_word($word, $definition, $example, $region);
+        //     $new_us_word->save();
+        //     $result =
+        //     //Act
+        //     $this->assertEquals($new_us_word, $result);
+        // }
 
     }
  ?>
