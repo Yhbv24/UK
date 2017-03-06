@@ -39,7 +39,7 @@
 
         }
 
-        function testGetExamplt()
+        function testGetExample()
         {
             $word = "suspenders";
             $definition = "Elastic straps that hold up pants.";
@@ -49,6 +49,20 @@
             $result = $test_US->getExample();
 
             $this->assertEquals($example, $result);
+
+        }
+
+        function testGetRegion()
+        {
+            $word = "Coke";
+            $definition = "Any sweet carbonated beverage.";
+            $example = "He had a grape coke with his burger.";
+            $region = "South";
+            $test_US = new US($word, $definition, $example, $region);
+
+            $result = $test_US->getRegion();
+
+            $this->assertEquals($region, $result);
 
         }
     }
