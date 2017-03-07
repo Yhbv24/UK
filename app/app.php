@@ -49,4 +49,8 @@
         return $app["twig"]->render("search.html.twig", array("output" => $output, "UK_word" => $UK_word, "US_word" => $US_word));
     });
 
+    $app->get("/add_word", function() use($app){
+        return $app["twig"]->render("add_us_word.html.twig");
+    });
+
     return $app;

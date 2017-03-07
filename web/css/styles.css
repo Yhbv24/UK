@@ -1,3 +1,14 @@
 .center {
     text-align: center;
 }
+
+label {
+    font-size: .95em;
+    line-height: 1.5em;
+}
+
+a:hover {
+    text-decoration: none;
+    color: red;
+    transition: .3s;
+}
