@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Search</title>
+    </head>
+    <body>
+        {% if output is empty %}
+            <h4>No results found</h4>
+        {% elseif output is not empty %}
+            {% for word in output %}
+                <p>{{ word.getWord }}</p>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>

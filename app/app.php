@@ -12,6 +12,8 @@
     $password = "root";
     $DB = new PDO($server, $username, $password);
 
+    $app["debug"] = true;
+
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
@@ -20,11 +22,14 @@
     // ***** Get routes *****
 
     $app->get("/", function() use ($app) { // Route to the home page
-        return $app["twig"]->render("index.html.twig", array("uk_words" => $found_uk_words));
+        return $app["twig"]->render("index.html.twig");
     });
-    $app->post("/", function() use ($app) {
-        $search_word = $_POST["uk_word"];
-        $found_uk_words = $search_word->getUSWord();
-        return $app->redirect('/');
+
+    $app->get("/search", function() use ($app) {
+        $search_word = $_GET["search"];
+        $output = UK_word::search($search_word);
+
+        return $app["twig"]->render("search.html.twig", array("output" => $output));
     });
-return $app;
+
+    return $app;

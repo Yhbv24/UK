@@ -148,5 +148,23 @@ class UK_word
         }
         return $matches;
     }
+
+    static function search($search_word)
+    {
+        $found_words = $GLOBALS["DB"]->query("SELECT * FROM UK_words WHERE word LIKE '%" . $search_word . "%';");
+        $output = array();
+
+        foreach ($found_words as $word) {
+            $id = $word['id'];
+            $this_word = $word['word'];
+            $example = $word['example'];
+            $region = $word['region'];
+            $definition = $word['definition'];
+            $word = new UK_word($this_word, $definition, $example, $region, $id);
+            array_push($output, $word);
+        }
+
+        return $output;
+    }
 }
  ?>
