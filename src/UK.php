@@ -64,7 +64,7 @@ class UK_word
     }
     static function getAll()
     {
-        $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words;");
+        $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words ORDER BY word;");
         $words = array();
 
         foreach ($returned_words as $uk_word) {
@@ -143,7 +143,7 @@ class UK_word
             $example = $word['example'];
             $region = $word['region'];
             $definition = $word['definition'];
-            $word = new US($this_word, $definition, $example, $region, $id);
+            $word = new US_word($this_word, $definition, $example, $region, $id);
             array_push($matches, $word);
         }
         return $matches;
@@ -163,10 +163,11 @@ class UK_word
             $example = $word['example'];
             $region = $word['region'];
             $definition = $word['definition'];
-            $word = new US($this_word, $definition, $example, $region, $id);
+            $word = new US_word($this_word, $definition, $example, $region, $id);
             array_push($matches, $word);
         }
         return $matches;
     }
+
 }
  ?>

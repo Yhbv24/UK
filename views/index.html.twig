@@ -26,11 +26,11 @@
                     <li>{{word.getRegion}}</li>
                     {% endfor %}
                 {% endif %}
-                {% if search is not empty %}
-                    <li>{{search.getWord}}</li>
-                    <li>{{search.getDefinition}}</li>
-                    <li>{{search.getExample}}</li>
-                    <li>{{search.getRegion}}</li>
+                {% if uk_words is not empty %}
+                    <li>{{uk_words.getWord}}</li>
+                    <li>{{uk_words.getDefinition}}</li>
+                    <li>{{uk_words.getExample}}</li>
+                    <li>{{uk_words.getRegion}}</li>
                 {% endif %}
                 {% if us_words is empty %}
                 <p> No words Sorry!
