@@ -28,11 +28,19 @@
     $app->get("/search", function() use ($app) { // Searches both US and UK tables despite name
         $search_word = strtolower($_GET["search"]);
         $output = UK_word::search($search_word);
-        $word_match = $output[0];
         $UK_word = null;
         $US_word = null;
+        $word_match = null;
 
-        if ($word_match->getRegion() == "US") {
+        if (!$output) {
+            $word_match = "";
+        } else {
+            $word_match = $output[0];
+        }
+
+        if (!$output) {
+            $word_match = "";
+        } elseif ($word_match->getRegion() == "US") {
             $UK_word = $word_match->getUKWords();
         } else {
             $US_word = $word_match->getUSWords();
