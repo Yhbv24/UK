@@ -1,4 +1,4 @@
-wr<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -13,19 +13,30 @@ wr<!DOCTYPE html>
         {% block body %}
             <div class="container">
                 <form action="/" method="post">
-                    <label for="uk_word">Search by UK word</label>
-                    <input type="text" name="uk_word">
+                    <label for="us_word">Search by US word</label>
+                    <input type="text" name="us_word">
                     <button type="submit">Search</button>
                 </form>
 
-                {% if uk_words is not empty %}
-                    {% for word in uk_words %}
+                {% if us_words is not empty %}
+                    {% for word in us_words %}
                     <li>{{word.getWord}}</li>
                     <li>{{word.getDefinition}}</li>
                     <li>{{word.getExample}}</li>
                     <li>{{word.getRegion}}</li>
                     {% endfor %}
                 {% endif %}
+                {% if search is not empty %}
+                    <li>{{search.getWord}}</li>
+                    <li>{{search.getDefinition}}</li>
+                    <li>{{search.getExample}}</li>
+                    <li>{{search.getRegion}}</li>
+                {% endif %}
+                {% if us_words is empty %}
+                <p> No words Sorry!
+                </p>
+                {% endif %}
+                <a href="/add_US_word"><button type="button">Add a US word</button></a>
             </div>
         {% endblock %}
     </body>

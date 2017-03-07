@@ -148,5 +148,25 @@ class UK_word
         }
         return $matches;
     }
+
+    static function searchUSWords($search_word)
+    {
+        $returned_words = $GLOBALS['DB']->query("SELECT US_words.* FROM UK_words
+        JOIN UK_US ON (UK_words.id = UK_US.uk_id)
+        JOIN US_words ON (UK_US.us_id = US_words.id)
+        WHERE UK_words.id = {$search_word->getId()};");
+        $matches = array();
+        foreach($returned_words as $word)
+        {
+            $id = $word['id'];
+            $this_word = $word['word'];
+            $example = $word['example'];
+            $region = $word['region'];
+            $definition = $word['definition'];
+            $word = new US($this_word, $definition, $example, $region, $id);
+            array_push($matches, $word);
+        }
+        return $matches;
+    }
 }
  ?>
