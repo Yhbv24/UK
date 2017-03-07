@@ -129,7 +129,7 @@ class UK_word
         $GLOBALS['DB']->exec("INSERT INTO UK_US (UK_id, US_id) VALUES ({$this->getId()}, {$us_id});");
     }
 
-    function getUSWord()
+    function getUSWords()
     {
         $returned_words = $GLOBALS['DB']->query("SELECT US_words.* FROM UK_words
         JOIN UK_US ON (UK_words.id = UK_US.uk_id)
@@ -143,7 +143,7 @@ class UK_word
             $example = $word['example'];
             $region = $word['region'];
             $definition = $word['definition'];
-            $word = new US($this_word, $definition, $example, $region, $id);
+            $word = new US_word($this_word, $definition, $example, $region, $id);
             array_push($matches, $word);
         }
         return $matches;

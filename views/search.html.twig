@@ -16,6 +16,22 @@
                 <p>Example: {{ word.getExample }}</p>
                 <p>Region: {{ word.getRegion }}</p><br>
             {% endfor %}
+
+            {% if US_word is not empty %}
+                {% for us in US_word %}
+                <p>Word: {{ us.getWord }}</p>
+                <p>Definition: {{ us.getDefinition }}</p>
+                <p>Example: {{ us.getExample }}</p>
+                <p>Region: {{ us.getRegion }}</p><br>
+                {% endfor %}
+            {% elseif UK_word is not empty %}
+                {% for uk in UK_word %}
+                <p>Word: {{ uk.getWord }}</p>
+                <p>Definition: {{ uk.getDefinition }}</p>
+                <p>Example: {{ uk.getExample }}</p>
+                <p>Region: {{ uk.getRegion }}</p><br>
+                {% endfor %}
+            {% endif %}
         {% endif %}
     </body>
 </html>
