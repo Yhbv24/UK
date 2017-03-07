@@ -22,7 +22,6 @@
     // ***** Get routes *****
 
     $app->get("/", function() use ($app) { // Route to the home page
-
         return $app["twig"]->render("index.html.twig");
     });
 
@@ -45,8 +44,9 @@
     $app->post("/", function() use ($app) {
         $search_word = $_POST["us_word"];
         UK_word::searchUSWords($search_word);
-
-        return $app['twig']->render("index.html.twig", array("search" => $search_word));
+        $uk_words = UK_word::getAll();
+        $us_words = US_word::getAll();
+        return $app['twig']->render("index.html.twig", array("search" => $search_word, 'us_words'=>$us_words, 'uk_words'=>$uk_words));
     });
 
     $app->get('/add_US_word', function() use ($app) {
@@ -80,5 +80,12 @@
 
         return $app->redirect("/");
     });
+
+    $app->get('/view_all', function() use ($app) {
+        $uk_words = UK_word::getAll();
+        $us_words = US_word::getAll();
+        return $app['twig']->render('word_list.html.twig', array('us_words'=>$us_words, 'uk_words'=>$uk_words));
+    });
+
 
     return $app;
