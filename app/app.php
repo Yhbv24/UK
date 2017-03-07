@@ -46,8 +46,8 @@
             $US_word = $word_match->getUSWords();
         }
 
-        return $app["twig"]->render("search.html.twig", array("output" => $output, "UK_word" => $UK_word, "US_word" => $US_word));
-    });
+        return $app["twig"]->render("search.html.twig", array("output" => $output, "UK_word" => $UK_word, "US_word" => $US_word, 'word_match'=>$word_match));
+        });
 
     $app->post("/", function() use ($app) {
         $search_word = $_POST["us_word"];
@@ -68,7 +68,7 @@
         $us_region = $_POST['region'];
         $new_word = new US_word($us_word, $us_definition, $us_example, $us_region);
         $new_word->save();
-
+    //
         $uk_word = $_POST['uk_word'];
         $uk_definition = $_POST['uk_definition'];
         $uk_example = $_POST['uk_example'];
@@ -77,8 +77,9 @@
         $new_uk_word->save();
 
         $new_uk_word->addUSWord($new_word->getId());
+        $new_word->addUKWord($new_uk_word->getId());
 
-        return $app->redirect('/');
+        return $app["twig"]->render("confirm_add.html.twig", array('new_us_word'=>$new_word, 'new_uk_word'=>$new_uk_word));
     });
 
     $app->post('/delete_all', function() use ($app) {
@@ -89,11 +90,10 @@
         return $app->redirect("/");
     });
 
-    $app->get('/view_all', function() use ($app) {
+    $app->get('/complete_list', function() use ($app) {
         $uk_words = UK_word::getAll();
         $us_words = US_word::getAll();
         return $app['twig']->render('word_list.html.twig', array('us_words'=>$us_words, 'uk_words'=>$uk_words));
     });
-
 
     return $app;
