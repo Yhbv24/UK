@@ -64,7 +64,7 @@ class UK_word
     }
     static function getAll()
     {
-        $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words;");
+        $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words ORDER BY word;");
         $words = array();
 
         foreach ($returned_words as $uk_word) {
@@ -129,7 +129,7 @@ class UK_word
         $GLOBALS['DB']->exec("INSERT INTO UK_US (UK_id, US_id) VALUES ({$this->getId()}, {$us_id});");
     }
 
-    function getUSWords()
+   function getUSWords()
     {
         $returned_words = $GLOBALS['DB']->query("SELECT US_words.* FROM UK_words
         JOIN UK_US ON (UK_words.id = UK_US.uk_id)
@@ -148,13 +148,11 @@ class UK_word
         }
         return $matches;
     }
-
     static function search($search_word)
     {
         $found_us_words = $GLOBALS["DB"]->query("SELECT * FROM US_words WHERE word LIKE '%" . $search_word . "%';");
         $found_uk_words = $GLOBALS["DB"]->query("SELECT * FROM UK_words WHERE word LIKE '%" . $search_word . "%';");
         $output = array();
-
         foreach ($found_us_words as $word) {
             $id = $word['id'];
             $this_word = $word['word'];
@@ -162,9 +160,9 @@ class UK_word
             $region = $word['region'];
             $definition = $word['definition'];
             $word = new US_word($this_word, $definition, $example, $region, $id);
+
             array_push($output, $word);
         }
-
         foreach ($found_uk_words as $word) {
             $id = $word['id'];
             $this_word = $word['word'];
@@ -174,8 +172,8 @@ class UK_word
             $word = new UK_word($this_word, $definition, $example, $region, $id);
             array_push($output, $word);
         }
-
         return $output;
     }
+
 }
  ?>
