@@ -79,7 +79,7 @@
         $new_uk_word->addUSWord($new_word->getId());
         $new_word->addUKWord($new_uk_word->getId());
 
-        return $app->redirect('/');
+        return $app["twig"]->render("confirm_add.html.twig", array('new_us_word'=>$new_word, 'new_uk_word'=>$new_uk_word));
     });
 
     $app->post('/delete_all', function() use ($app) {

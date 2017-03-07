@@ -1,6 +1,11 @@
-{% extends 'index.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
 
-{% block body %}
     <div class="container">
         <h1>UK words</h1>
         {% for word in uk_words %}
@@ -12,4 +17,5 @@
         <li>{{word.getWord}}</li>
         {% endfor %}
     </div>
-{% endblock %}
+</body>
+</html>
