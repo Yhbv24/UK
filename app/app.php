@@ -26,7 +26,7 @@
     });
 
     $app->get("/search", function() use ($app) {
-        $search_word = $_GET["search"];
+        $search_word = strtolower($_GET["search"]);
         $output = UK_word::search($search_word);
 
         return $app["twig"]->render("search.html.twig", array("output" => $output));
