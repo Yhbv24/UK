@@ -6,7 +6,7 @@
         <title>Search</title>
     </head>
     <body>
-        {% if output is empty %}
+        {% if word_match is empty %}
             <h4>No results found</h4>
         {% elseif output is not empty %}
             <h4>Your seach results:</h4>
@@ -16,7 +16,7 @@
                 <p>Example: {{ word.getExample }}</p>
                 <p>Region: {{ word.getRegion }}</p><br>
             {% endfor %}
-
+        {% endif %}
             {% if US_word is not empty %}
                 {% for us in US_word %}
                 <p>Word: {{ us.getWord }}</p>
@@ -31,7 +31,7 @@
                 <p>Example: {{ uk.getExample }}</p>
                 <p>Region: {{ uk.getRegion }}</p><br>
                 {% endfor %}
-            {% endif %}
         {% endif %}
+        <a href="/complete_list"><button type="button">view all words</button></a>
     </body>
 </html>
