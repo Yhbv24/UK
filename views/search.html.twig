@@ -6,32 +6,107 @@
         <title>Search</title>
     </head>
     <body>
-        {% if output is empty %}
-            <h4>No results found</h4>
-        {% elseif output is not empty %}
-            <h4>Your seach results:</h4>
-            {% for word in output %}
-                <p>Word: {{ word.getWord }}</p>
-                <p>Definition: {{ word.getDefinition }}</p>
-                <p>Example: {{ word.getExample }}</p>
-                <p>Region: {{ word.getRegion }}</p><br>
-            {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="jumbotron">Results</h1>
+                    {% if output is not empty %}
+                        <div class="center">
+                            <h3>Your seach results:</h3><Br>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
 
-            {% if US_word is not empty %}
-                {% for us in US_word %}
-                <p>Word: {{ us.getWord }}</p>
-                <p>Definition: {{ us.getDefinition }}</p>
-                <p>Example: {{ us.getExample }}</p>
-                <p>Region: {{ us.getRegion }}</p><br>
-                {% endfor %}
-            {% elseif UK_word is not empty %}
-                {% for uk in UK_word %}
-                <p>Word: {{ uk.getWord }}</p>
-                <p>Definition: {{ uk.getDefinition }}</p>
-                <p>Example: {{ uk.getExample }}</p>
-                <p>Region: {{ uk.getRegion }}</p><br>
-                {% endfor %}
-            {% endif %}
-        {% endif %}
+            <div class="row">
+                <div class="col-sm-6">
+                    {% if output is not empty %}
+                        {% for word in output %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Your Word</th>
+                                        <th>Definition</th>
+                                        <th>Example</th>
+                                        <th>Region</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>{{ word.getWord }}</td>
+                                        <td>{{ word.getDefinition }}</td>
+                                        <td>{{ word.getExample }}</td>
+                                        <td>{{ word.getRegion }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="col-sm-6">
+                    {% if UK_word is not empty %}
+                        {% for uk in UK_word %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>UK Word</th>
+                                        <th>Definition</th>
+                                        <th>Example</th>
+                                        <th>Region</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>{{ uk.getWord }}</td>
+                                        <td>{{ uk.getDefinition }}</td>
+                                        <td>{{ uk.getExample }}</td>
+                                        <td>{{ uk.getRegion }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="col-sm-6">
+                    {% if US_word is not empty %}
+                        {% for us in US_word %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>US Word</th>
+                                        <th>Definition</th>
+                                        <th>Example</th>
+                                        <th>Region</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>{{ us.getWord }}</td>
+                                        <td>{{ us.getDefinition }}</td>
+                                        <td>{{ us.getExample }}</td>
+                                        <td>{{ us.getRegion }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <form action="/" method="get">
+                        <div class="center">
+                            <button type="submit" class="btn btn-sm">Home</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
