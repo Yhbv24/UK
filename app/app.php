@@ -77,6 +77,7 @@
         $new_uk_word->save();
 
         $new_uk_word->addUSWord($new_word->getId());
+        $new_word->addUKWord($new_uk_word->getId());
 
         return $app->redirect('/');
     });
