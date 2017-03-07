@@ -1,5 +1,2 @@
-<<<<<<< HEAD
 vendor/
-=======
-/vendor
->>>>>>> 72dbf4f37165e2346efc76c6bb4086fab8d63057
+.DS_store

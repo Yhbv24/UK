@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/styles.css" rel="stylesheet" type="text/css">
+        <title>Search</title>
+    </head>
+    <body>
+        {% if output is empty %}
+            <h4>No results found</h4>
+        {% elseif output is not empty %}
+            <h4>Your seach results:</h4>
+            {% for word in output %}
+                <p>Word: {{ word.getWord }}</p>
+                <p>Definition: {{ word.getDefinition }}</p>
+                <p>Example: {{ word.getExample }}</p>
+                <p>Region: {{ word.getRegion }}</p><br>
+            {% endfor %}
+
+            {% if US_word is not empty %}
+                {% for us in US_word %}
+                <p>Word: {{ us.getWord }}</p>
+                <p>Definition: {{ us.getDefinition }}</p>
+                <p>Example: {{ us.getExample }}</p>
+                <p>Region: {{ us.getRegion }}</p><br>
+                {% endfor %}
+            {% elseif UK_word is not empty %}
+                {% for uk in UK_word %}
+                <p>Word: {{ uk.getWord }}</p>
+                <p>Definition: {{ uk.getDefinition }}</p>
+                <p>Example: {{ uk.getExample }}</p>
+                <p>Region: {{ uk.getRegion }}</p><br>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </body>
+</html>
