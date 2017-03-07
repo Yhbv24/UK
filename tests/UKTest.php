@@ -164,7 +164,6 @@
 
         }
 
-
         function test_findUSWord()
         {
             $word = "lorry";
@@ -177,13 +176,13 @@
             $word = "truck";
             $definition = "a large car that carries things";
             $example = "the truck obstructs my view";
-            $new_us_word = new US($word, $definition, $example);
+            $new_us_word = new US_word($word, $definition, $example);
             $new_us_word->save();
 
             $word = "18 wheeler";
             $definition = "a large car that carries things";
             $example = "the truck obstructs my view";
-            $new_us_word2 = new US($word, $definition, $example);
+            $new_us_word2 = new US_word($word, $definition, $example);
             $new_us_word2->save();
 
             $us_word_id = $new_us_word->getId();

@@ -72,7 +72,7 @@
 
         static function getAll()
         {
-            $usWords = $GLOBALS['DB']->query("SELECT * FROM us_words;");
+            $usWords = $GLOBALS['DB']->query("SELECT * FROM us_words ORDER BY word;");
             $word_array = array();
             foreach($usWords as $usWord) {
                 $word = $usWord['word'];
@@ -137,5 +137,7 @@
             }
             return $matches;
         }
+
+
     }
  ?>

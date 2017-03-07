@@ -64,7 +64,7 @@ class UK_word
     }
     static function getAll()
     {
-        $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words;");
+        $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words ORDER BY word;");
         $words = array();
 
         foreach ($returned_words as $uk_word) {
@@ -160,6 +160,7 @@ class UK_word
             $region = $word['region'];
             $definition = $word['definition'];
             $word = new US_word($this_word, $definition, $example, $region, $id);
+
             array_push($output, $word);
         }
         foreach ($found_uk_words as $word) {
@@ -173,5 +174,6 @@ class UK_word
         }
         return $output;
     }
+
 }
  ?>
