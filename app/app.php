@@ -42,12 +42,6 @@
         return $app["twig"]->render("search.html.twig", array("output" => $output, "UK_word" => $UK_word, "US_word" => $US_word));
     });
 
-        // $uk_words = UK_word::getAll();
-        // $us_words = US_word::getAll();
-
-        return $app["twig"]->render("index.html.twig", array("search" => $search_word));
-    });
-
     $app->post("/", function() use ($app) {
         $search_word = $_POST["us_word"];
         UK_word::searchUSWords($search_word);
