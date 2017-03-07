@@ -129,7 +129,7 @@ class UK_word
         $GLOBALS['DB']->exec("INSERT INTO UK_US (UK_id, US_id) VALUES ({$this->getId()}, {$us_id});");
     }
 
-    function getUSWord()
+   function getUSWords()
     {
         $returned_words = $GLOBALS['DB']->query("SELECT US_words.* FROM UK_words
         JOIN UK_US ON (UK_words.id = UK_US.uk_id)
@@ -143,30 +143,35 @@ class UK_word
             $example = $word['example'];
             $region = $word['region'];
             $definition = $word['definition'];
-            $word = new US($this_word, $definition, $example, $region, $id);
+            $word = new US_word($this_word, $definition, $example, $region, $id);
             array_push($matches, $word);
         }
         return $matches;
     }
-
-    static function searchUSWords($search_word)
+    static function search($search_word)
     {
-        $returned_words = $GLOBALS['DB']->query("SELECT US_words.* FROM UK_words
-        JOIN UK_US ON (UK_words.id = UK_US.uk_id)
-        JOIN US_words ON (UK_US.us_id = US_words.id)
-        WHERE UK_words.id = {$search_word->getId()};");
-        $matches = array();
-        foreach($returned_words as $word)
-        {
+        $found_us_words = $GLOBALS["DB"]->query("SELECT * FROM US_words WHERE word LIKE '%" . $search_word . "%';");
+        $found_uk_words = $GLOBALS["DB"]->query("SELECT * FROM UK_words WHERE word LIKE '%" . $search_word . "%';");
+        $output = array();
+        foreach ($found_us_words as $word) {
             $id = $word['id'];
             $this_word = $word['word'];
             $example = $word['example'];
             $region = $word['region'];
             $definition = $word['definition'];
-            $word = new US($this_word, $definition, $example, $region, $id);
-            array_push($matches, $word);
+            $word = new US_word($this_word, $definition, $example, $region, $id);
+            array_push($output, $word);
         }
-        return $matches;
+        foreach ($found_uk_words as $word) {
+            $id = $word['id'];
+            $this_word = $word['word'];
+            $example = $word['example'];
+            $region = $word['region'];
+            $definition = $word['definition'];
+            $word = new UK_word($this_word, $definition, $example, $region, $id);
+            array_push($output, $word);
+        }
+        return $output;
     }
 }
  ?>

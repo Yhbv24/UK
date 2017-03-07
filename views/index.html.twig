@@ -1,43 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>British/American translator</title>
+        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/styles.css" rel="stylesheet" type="text/css">
+        <title>Translator</title>
     </head>
     <body>
-        {% block header %}
-            <div class="jumbotron">
-                <h1>British/American Translator</h1>
-            </div>
-        {% endblock %}
-        {% block body %}
-            <div class="container">
-                <form action="/" method="post">
-                    <label for="us_word">Search by US word</label>
-                    <input type="text" name="us_word">
-                    <button type="submit">Search</button>
-                </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="jumbotron">Welcome to the Translator</h1>
+                    <form action="/search" method="get" class="form-group">
+                        <input type="text" name="search" placeholder="your search word/phrase" class="form-control" id="search" required><br>
 
-                {% if us_words is not empty %}
-                    {% for word in us_words %}
-                    <li>{{word.getWord}}</li>
-                    <li>{{word.getDefinition}}</li>
-                    <li>{{word.getExample}}</li>
-                    <li>{{word.getRegion}}</li>
-                    {% endfor %}
-                {% endif %}
-                {% if search is not empty %}
-                    <li>{{search.getWord}}</li>
-                    <li>{{search.getDefinition}}</li>
-                    <li>{{search.getExample}}</li>
-                    <li>{{search.getRegion}}</li>
-                {% endif %}
-                {% if us_words is empty %}
-                <p> No words Sorry!
-                </p>
-                {% endif %}
-                <a href="/add_US_word"><button type="button">Add a US word</button></a>
+                        <div class="center">
+                            <button type="submit" class="btn btn-sm">Search</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        {% endblock %}
+        </div>
     </body>
 </html>
