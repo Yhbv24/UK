@@ -7,7 +7,7 @@
         private $region;
         private $id;
 
-        function __construct($word, $definition, $example, $region=null, $id=null)
+        function __construct($word, $definition, $example, $region="US", $id=null)
         {
             $this->word = $word;
             $this->definition = $definition;
