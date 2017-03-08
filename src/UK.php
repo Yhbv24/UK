@@ -65,7 +65,7 @@ class UK_word
     }
     function save()
     {
-        $GLOBALS['DB']->exec("INSERT INTO uk_words (word, definition, example, region country) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}', '{$this->getRegion()}', '{$this->getCountry()}');");
+        $GLOBALS['DB']->exec("INSERT INTO uk_words (word, definition, example, region, country) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}', '{$this->getRegion()}', '{$this->getCountry()}');");
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
     static function getAll()

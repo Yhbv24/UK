@@ -73,7 +73,7 @@
         $new_uk_word = new UK_word($uk_word, $uk_definition, $uk_example, $uk_region, $country = "UK");
         $new_uk_word->save();
 
-        $new_uk_word->addUSWord($new_word->getId());
+    
         $new_word->addUKWord($new_uk_word->getId());
 
         return $app["twig"]->render("confirm_add.html.twig", array('new_us_word'=>$new_word, 'new_uk_word'=>$new_uk_word));
