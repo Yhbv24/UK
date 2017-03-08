@@ -185,5 +185,35 @@ class UK_word
         return $output;
     }
 
+    static function getboth()
+    {
+      $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words");
+      $usWords = $GLOBALS['DB']->query("SELECT * FROM us_words");
+      $words =[];
+
+      foreach ($returned_words as $uk_word) {
+          $word = $uk_word["word"];
+          $definition = $uk_word["definition"];
+          $example = $uk_word["example"];
+          $region = $uk_word["region"];
+          $country = $uk_word['country'];
+          $id = $uk_word["id"];
+          $new_uk_words = new UK_word($word, $definition, $example, $region, $country, $id);
+          array_push($words, $new_uk_words);
+        }
+
+      foreach($usWords as $usWord) {
+          $word = $usWord['word'];
+          $definition = $usWord['definition'];
+          $example = $usWord['example'];
+          $region = $usWord['region'];
+          $country = $usWord['country'];
+          $id = $usWord['id'];
+          $new_us = new US_word($word, $definition, $example, $region, $country, $id);
+          array_push($words, $new_us);
+        }
+        return $words;
+    }
+
 }
  ?>

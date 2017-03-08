@@ -22,7 +22,8 @@
     // ***** Get routes *****
 
     $app->get("/", function() use ($app) { // Route to the home page
-        return $app["twig"]->render("index.html.twig");
+        $words = Uk_word::getBoth();
+        return $app["twig"]->render("index.html.twig", array('words' => $words));
     });
 
     $app->get("/search", function() use ($app) { // Searches both US and UK tables despite name
