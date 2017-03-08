@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+
+    <div class="container">
+        <h1>UK words</h1>
+        {% for word in uk_words %}
+        <li>{{word.getWord}}</li>
+        {% endfor %}
+
+        <h1>US words</h1>
+        {% for word in us_words %}
+        <li>{{word.getWord}}</li>
+        {% endfor %}
+        <a href="/"><button type="button">Home</button></a>
+    </div>
+</body>
+</html>

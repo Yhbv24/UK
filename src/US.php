@@ -5,14 +5,16 @@
         private $definition;
         private $example;
         private $region;
+        private $country;
         private $id;
 
-        function __construct($word, $definition, $example, $region=null, $id=null)
+        function __construct($word, $definition, $example, $region, $country = "US", $id=null)
         {
             $this->word = $word;
             $this->definition = $definition;
             $this->example = $example;
             $this->region = $region;
+            $this->country = "US";
             $this->id = $id;
         }
 
@@ -36,6 +38,11 @@
         function getRegion()
         {
             return $this->region;
+        }
+
+        function getCountry()
+        {
+            return $this->country;
         }
 
         function getId()
@@ -65,22 +72,23 @@
 
         function save()
         {
-            $new_US = $GLOBALS['DB']->exec("INSERT INTO us_words (word, definition, example) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}');");
+            $new_US = $GLOBALS['DB']->exec("INSERT INTO us_words (word, definition, example, region, country) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}', '{$this->getRegion()}', '{$this->getCountry()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
 
         }
 
         static function getAll()
         {
-            $usWords = $GLOBALS['DB']->query("SELECT * FROM us_words;");
+            $usWords = $GLOBALS['DB']->query("SELECT * FROM us_words ORDER BY word;");
             $word_array = array();
             foreach($usWords as $usWord) {
                 $word = $usWord['word'];
                 $definition = $usWord['definition'];
                 $example = $usWord['example'];
                 $region = $usWord['region'];
+                $country = $word['country'];
                 $id = $usWord['id'];
-                $new_us = new US_word($word, $definition, $example, $region, $id);
+                $new_us = new US_word($word, $definition, $example, $region, $country, $id);
                 array_push($word_array, $new_us);
             }
             return $word_array;
@@ -107,8 +115,9 @@
                 $definition = $us_word['definition'];
                 $example = $us_word['example'];
                 $region = $us_word['region'];
+                $country = $word['country'];
                 $id = $us_word['id'];
-                $new_us_word = new US_word($word, $definition, $example, $region, $id);
+                $new_us_word = new US_word($word, $definition, $example, $region, $country, $id);
             }
             return $new_us_word;
         }
@@ -131,11 +140,14 @@
                 $definition = $uk_word['definition'];
                 $example = $uk_word['example'];
                 $region = $uk_word['region'];
+                $country = $word['country'];
                 $id = $uk_word['id'];
-                $new_UK = new UK_word($word, $definition, $example, $region, $id);
+                $new_UK = new UK_word($word, $definition, $example, $region, $country, $id);
                 array_push($matches, $new_UK);
             }
             return $matches;
         }
+
+
     }
  ?>

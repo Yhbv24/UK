@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,13 +8,14 @@
     </head>
     <body>
 
-        {% block body %}
         <div class="container">
             <h1 class="jumbotron">
                 Add your own word!
             </h1>
             <form action="/add_US_word" method="post" class="form-group">
+            
                 <div class="row">
+                
                     <div class="col-sm-6">
                         <div class="center">
                             <h3>Add US Word</h3><br>
@@ -23,13 +25,14 @@
                             <label for"definition">Definition:</label>
                             <input type="text" name="definition" class="form-control" required><br>
 
-                            <label for"example">Region:</label>
+                            <label for"example">Example:</label>
                             <input type="text" name="example" class="form-control" required><br>
 
-                            <label for"region">Example:</label>
+                            <label for"region">Region:</label>
                             <input type="text" name="region" class="form-control" required><br><br>
                         </div>
                     </div>
+                    
                     <div class="col-sm-6">
                         <div class="center">
                             <h3>Add UK Word</h3><br>
@@ -46,6 +49,7 @@
                             <input type="text" name="uk_example" class="form-control" required><br>
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="row">
@@ -55,6 +59,7 @@
                         </div>
                     </div>
                 </div>
+                
             </form>
 
             <form method="get" action="/">
@@ -62,7 +67,66 @@
                     <button type="submit" class="btn btn-sm">Home</button>
                 </div>
             </form>
+            
         </div>
-        {% endblock %}
+        
     </body>
 </html>
+---------------
+{% extends 'index.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <form action="/add_US_word" method="post">
+                <label for"us_word">US word to add:</label>
+                <input type="text" name="us_word" required><br>
+
+                <label for"definition">Definition:</label>
+                <input type="text" name="definition" required><br>
+
+                <label for"us_region">Region:</label>
+                <select name="us_region">
+                    <option value="Northeast">Northeast</option>
+                    <option value="South">South</option>
+                    <option value="Southwest">Southwest</option>
+                    <option value="Midwest">Midwest</option>
+                    <option value="West">West</option>
+                    <option value="National">Not regionally specific</option>
+                </select><br>
+
+                <label for"example">Example:</label>
+                <input type="text" name="example" required><br><br>
+
+                <label for"uk_word">UK word to add:</label>
+                <input type="text" name="uk_word" required><br>
+
+                <label for"uk_definition">Definition:</label>
+                <input type="text" name="uk_definition" required><br>
+
+                <label for"uk_region">Region:</label>
+                <select name="uk_region">
+                    <option value="Northern Ireland">Northern Ireland</option>
+                    <option value="Scotland">Scotland</option>
+                    <option value="Wales">Wales</option>
+                    <option value="Southeast England">Southeast England</option>
+                    <option value="Southwest England">Southwest England</option>
+                    <option value="London">London</option>
+                    <option value="Midlands">Midlands</option>
+                    <option value="Yorkshire">Yorkshire</option>
+                    <option value="National">Not regionally specific</option>
+                </select><br>
+
+                <label for"uk_example">Example:</label>
+                <input type="text" name="uk_example" required><br>
+
+                <button type="submit">Add Word</button>
+            </form>
+
+            <form action="/delete_all" method="post">
+                <button type="submit">Delete All</button>
+            </form>
+        </div>
+        <a href="/view_all"><button type="button">view all words</button></a>
+    </div>
+{% endblock %}
+
