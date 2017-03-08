@@ -65,7 +65,7 @@
         $us_region = $_POST['us_region'];
         $new_word = new US_word($us_word, $us_definition, $us_example, $us_region, $country = "US");
         $new_word->save();
-    //
+        
         $uk_word = $_POST['uk_word'];
         $uk_definition = $_POST['uk_definition'];
         $uk_example = $_POST['uk_example'];
