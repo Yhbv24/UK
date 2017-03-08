@@ -10,6 +10,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h1 class="jumbotron">Results</h1>
+                    {% if output is empty%}
+                    <div class="center">
+                        <h3>No result found</h3>
+                        <h3><a href="/add_word">Click here</a> to add your own word</h3><br>
+                    </div>
+                    {% endif %}
                     {% if output is not empty %}
                         <div class="center">
                             <h3>Your seach results:</h3><Br>
@@ -69,9 +75,47 @@
                                         <td>{{ uk.getCountry }}</td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table><br>
                         {% endfor %}
                     {% endif %}
+
+                    <div id="map">
+                        <script>
+                            function initMap() {
+                                var uk = {lat: 55.3781, lng: -3.4360};
+                                var map = new google.maps.Map(document.getElementById("map"), {
+                                    zoom: 4,
+                                    center: uk
+                                });
+                                var marker = new google.maps.Marker({
+                                    position: uk,
+                                    map: map
+                                });
+                            }
+                        </script>
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap
+                        ">
+                        </script>
+                    </div><br>
+
+                    <div id="map2">
+                        <script>
+                            function initMap() {
+                                var us = {lat: 37.0902, lng: -95.7129};
+                                var map = new google.maps.Map(document.getElementById("map2"), {
+                                    zoom: 4,
+                                    center: us
+                                });
+                                var marker = new google.maps.Marker({
+                                    position: us,
+                                    map: map
+                                });
+                            }
+                        </script>
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap
+                        ">
+                        </script>
+                    </div><br>
                 </div>
 
                 <div class="col-sm-6">
@@ -100,6 +144,7 @@
                             </table>
                         {% endfor %}
                     {% endif %}
+                    </div>
                 </div>
             </div>
 

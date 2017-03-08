@@ -1,3 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/styles.css" rel="stylesheet" type="text/css">
+        <title>Add Word</title>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1 class="jumbotron">
+                Add your own word!
+            </h1>
+            <form action="/add_US_word" method="post" class="form-group">
+            
+                <div class="row">
+                
+                    <div class="col-sm-6">
+                        <div class="center">
+                            <h3>Add US Word</h3><br>
+                            <label for"us_word">Word:</label>
+                            <input type="text" name="us_word" class="form-control" required><br>
+
+                            <label for"definition">Definition:</label>
+                            <input type="text" name="definition" class="form-control" required><br>
+
+                            <label for"example">Example:</label>
+                            <input type="text" name="example" class="form-control" required><br>
+
+                            <label for"region">Region:</label>
+                            <input type="text" name="region" class="form-control" required><br><br>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="center">
+                            <h3>Add UK Word</h3><br>
+                            <label for"uk_word">Word:</label>
+                            <input type="text" name="uk_word" class="form-control" required><br>
+
+                            <label for"uk_definition">Definition:</label>
+                            <input type="text" name="uk_definition" class="form-control" required><br>
+
+                            <label for"uk_region">Region:</label>
+                            <input type="text" name="uk_region" class="form-control" required><br>
+
+                            <label for"uk_example">Example:</label>
+                            <input type="text" name="uk_example" class="form-control" required><br>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="center">
+                            <button type="submit" class="btn btn-sm">Add Word</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+
+            <form method="get" action="/">
+                <div class="center">
+                    <button type="submit" class="btn btn-sm">Home</button>
+                </div>
+            </form>
+            
+        </div>
+        
+    </body>
+</html>
+---------------
 {% extends 'index.html.twig' %}
 {% block body %}
     <div class="row">
@@ -54,3 +129,4 @@
         <a href="/view_all"><button type="button">view all words</button></a>
     </div>
 {% endblock %}
+

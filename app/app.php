@@ -93,4 +93,12 @@
         return $app['twig']->render('word_list.html.twig', array('us_words'=>$us_words, 'uk_words'=>$uk_words));
     });
 
+    $app->get("/add_word", function() use($app){
+        return $app["twig"]->render("add_us_word.html.twig");
+    });
+
+    $app->get("/map", function() use($app){
+        return $app["twig"]->render("map.html.twig");
+    });
+
     return $app;
