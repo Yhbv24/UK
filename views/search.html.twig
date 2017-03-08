@@ -17,7 +17,6 @@
                     {% endif %}
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-6">
                     {% if output is not empty %}
@@ -29,6 +28,7 @@
                                         <th>Definition</th>
                                         <th>Example</th>
                                         <th>Region</th>
+                                        <th>Country</th>
                                     </tr>
                                 </thead>
 
@@ -38,6 +38,7 @@
                                         <td>{{ word.getDefinition }}</td>
                                         <td>{{ word.getExample }}</td>
                                         <td>{{ word.getRegion }}</td>
+                                        <td>{{ word.getCountry }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -55,6 +56,7 @@
                                         <th>Definition</th>
                                         <th>Example</th>
                                         <th>Region</th>
+                                        <th>Country</th>
                                     </tr>
                                 </thead>
 
@@ -64,6 +66,7 @@
                                         <td>{{ uk.getDefinition }}</td>
                                         <td>{{ uk.getExample }}</td>
                                         <td>{{ uk.getRegion }}</td>
+                                        <td>{{ uk.getCountry }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -81,6 +84,7 @@
                                         <th>Definition</th>
                                         <th>Example</th>
                                         <th>Region</th>
+                                        <th>Country</th>
                                     </tr>
                                 </thead>
 
@@ -90,6 +94,7 @@
                                         <td>{{ us.getDefinition }}</td>
                                         <td>{{ us.getExample }}</td>
                                         <td>{{ us.getRegion }}</td>
+                                        <td>{{ us.getCountry }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -115,7 +120,7 @@
                 </div>
                 <form action="/add_US_word" method="get">
                     <div class="center">
-                        <button type="submit" class="btn btn-sm">Add US Word</button>
+                        <button type="submit" class="btn btn-sm">Add Word</button>
                     </div>
                 </form>
             </div>
