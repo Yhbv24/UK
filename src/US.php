@@ -72,7 +72,7 @@
 
         function save()
         {
-            $new_US = $GLOBALS['DB']->exec("INSERT INTO us_words (word, definition, example) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}');");
+            $new_US = $GLOBALS['DB']->exec("INSERT INTO us_words (word, definition, example, region, country) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}', '{$this->getRegion()}', '{$this->getCountry()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
 
         }
