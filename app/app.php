@@ -53,4 +53,8 @@
         return $app["twig"]->render("add_us_word.html.twig");
     });
 
+    $app->get("/map", function() use($app){
+        return $app["twig"]->render("map.html.twig");
+    });
+
     return $app;
