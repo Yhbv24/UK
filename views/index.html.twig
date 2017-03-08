@@ -14,8 +14,9 @@
                     <form action="/search" method="get" class="form-group">
                       <input type="text" name="search" list="search"  class="form-control" placeholder="Search" required>
                         <datalist id="search">
-                            <option value="Nike">
-                            <option value="Adidas">
+                            {% for word in words %}
+                            <option value={{word.getWord}}>
+                            {% endfor %}
                         </datalist>
                         <div class="center">
                             <button type="submit" class="btn btn-sm">Search</button>
