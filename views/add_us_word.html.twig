@@ -9,11 +9,18 @@
                 <label for"definition">Definition:</label>
                 <input type="text" name="definition" required><br>
 
-                <label for"example">Region:</label>
-                <input type="text" name="example" required><br>
+                <label for"us_region">Region:</label>
+                <select name="us_region">
+                    <option value="northeast">Northeast</option>
+                    <option value="south">South</option>
+                    <option value="southwest">Southwest</option>
+                    <option value="midwest">Midwest</option>
+                    <option value="west">West</option>
+                    <option value="national">Not regionally specific</option>
+                </select><br>
 
-                <label for"region">Example:</label>
-                <input type="text" name="region" required><br><br>
+                <label for"example">Example:</label>
+                <input type="text" name="example" required><br><br>
 
                 <label for"uk_word">UK word to add:</label>
                 <input type="text" name="uk_word" required><br>
@@ -22,7 +29,17 @@
                 <input type="text" name="uk_definition" required><br>
 
                 <label for"uk_region">Region:</label>
-                <input type="text" name="uk_region" required><br>
+                <select name="uk_region">
+                    <option value="Northern Ireland">Northern Ireland</option>
+                    <option value="scotland">Scotland</option>
+                    <option value="wales">Wales</option>
+                    <option value="southeast_england">Southeast England</option>
+                    <option value="southwest_england">Southwest England</option>
+                    <option value="london">London</option>
+                    <option value="midlands">Midlands</option>
+                    <option value="yorkshire">Yorkshire</option>
+                    <option value="national">Not regionally specific</option>
+                </select><br>
 
                 <label for"uk_example">Example:</label>
                 <input type="text" name="uk_example" required><br>

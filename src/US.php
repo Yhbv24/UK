@@ -5,14 +5,16 @@
         private $definition;
         private $example;
         private $region;
+        private $country;
         private $id;
 
-        function __construct($word, $definition, $example, $region="US", $id=null)
+        function __construct($word, $definition, $example, $region, $country = "US", $id=null)
         {
             $this->word = $word;
             $this->definition = $definition;
             $this->example = $example;
             $this->region = $region;
+            $this->country = $country;
             $this->id = $id;
         }
 
@@ -36,6 +38,11 @@
         function getRegion()
         {
             return $this->region;
+        }
+
+        function getCountry()
+        {
+            return $this->country;
         }
 
         function getId()

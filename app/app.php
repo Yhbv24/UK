@@ -40,12 +40,10 @@
 
         if (!$output) {
             $word_match = "";
-        } elseif ($word_match->getRegion() == "US") {
+        } elseif ($word_match->getCountry() == "US") {
             $UK_word = $word_match->getUKWords();
-        } else {
             $US_word = $word_match->getUSWords();
         }
-
         return $app["twig"]->render("search.html.twig", array("output" => $output, "UK_word" => $UK_word, "US_word" => $US_word, 'word_match'=>$word_match));
         });
 
@@ -65,7 +63,7 @@
         $us_word = $_POST['us_word'];
         $us_definition = $_POST['definition'];
         $us_example = $_POST['example'];
-        $us_region = $_POST['region'];
+        $us_region = $_POST['us_region'];
         $new_word = new US_word($us_word, $us_definition, $us_example, $us_region);
         $new_word->save();
     //

@@ -5,14 +5,16 @@ class UK_word
     private $definition;
     private $example;
     private $region;
+    private $country;
     private $id;
 
-    function __construct($word, $definition, $example, $region = "UK",  $id = null)
+    function __construct($word, $definition, $example, $region, $country = "UK", $id = null)
     {
         $this->word = $word;
         $this->definition = $definition;
         $this->example = $example;
         $this->region = $region;
+        $this->country = $country;
         $this->id = $id;
 
     }
@@ -48,6 +50,10 @@ class UK_word
     function getRegion()
     {
          return $this->region;
+    }
+    function getCountry()
+    {
+         return $this->country;
     }
     function getId()
     {
