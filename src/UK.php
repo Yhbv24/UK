@@ -78,7 +78,7 @@ class UK_word
             $definition = $uk_word["definition"];
             $example = $uk_word["example"];
             $region = $uk_word["region"];
-            $country = $word['country'];
+            $country = $uk_word['country'];
             $id = $uk_word["id"];
             $uk_word = new UK_word($word, $definition, $example, $region, $country, $id);
             array_push($words, $uk_word);

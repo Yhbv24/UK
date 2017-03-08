@@ -86,7 +86,7 @@
                 $definition = $usWord['definition'];
                 $example = $usWord['example'];
                 $region = $usWord['region'];
-                $country = $word['country'];
+                $country = $usWord['country'];
                 $id = $usWord['id'];
                 $new_us = new US_word($word, $definition, $example, $region, $country, $id);
                 array_push($word_array, $new_us);
@@ -148,6 +148,13 @@
             return $matches;
         }
 
+        // function US_Exists()
+        // {
+        //     $GLOBALS['DB']->query("SELECT IF (EXISTS(SELECT * FROM uk_words WHERE word = '{$word}'))")
+        //
+        // }
+
+        // SELECT word FROM uk_words WHERE EXISTS 
 
     }
  ?>
