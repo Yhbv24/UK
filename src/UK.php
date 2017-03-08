@@ -16,58 +16,69 @@ class UK_word
         $this->region = $region;
         $this->country = "UK";
         $this->id = $id;
-
     }
 
     function setWord($new_word)
     {
          $this->word = $new_word;
     }
+
     function getWord()
     {
          return $this->word;
     }
+
     function setDefinition($new_definition)
     {
          $this->definition = $new_definition;
     }
+
     function getDefinition()
     {
          return $this->definition;
     }
+
     function setExample($new_example)
     {
          $this->example = $new_example;
     }
+
     function getExample()
     {
          return $this->example;
     }
+
     function setRegion($new_region)
     {
          $this->region = $new_region;
     }
+
     function getRegion()
     {
          return $this->region;
     }
+
     function getCountry()
     {
          return $this->country;
     }
+
     function getId()
     {
          return $this->id;
     }
+
     function setId($id)
     {
          $this->id = $id;
     }
+
     function save()
     {
         $GLOBALS['DB']->exec("INSERT INTO uk_words (word, definition, example, region, country) VALUES ('{$this->getWord()}', '{$this->getDefinition()}', '{$this->getExample()}', '{$this->getRegion()}', '{$this->getCountry()}');");
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
+
     static function getAll()
     {
         $returned_words = $GLOBALS['DB']->query("SELECT * FROM uk_words ORDER BY word;");
@@ -128,7 +139,6 @@ class UK_word
             }
             return $found_word;
         }
-
     }
 
     function addUSWord($us_id)
@@ -156,6 +166,7 @@ class UK_word
         }
         return $matches;
     }
+
     static function search($search_word)
     {
         $found_us_words = $GLOBALS["DB"]->query("SELECT * FROM US_words WHERE word LIKE '%" . $search_word . "%';");
@@ -184,6 +195,5 @@ class UK_word
         }
         return $output;
     }
-
 }
  ?>
