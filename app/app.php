@@ -31,17 +31,16 @@
         $UK_word = null;
         $US_word = null;
         $word_match = null;
-
         if (!$output) {
             $word_match = "";
         } else {
             $word_match = $output[0];
         }
-
         if (!$output) {
             $word_match = "";
         } elseif ($word_match->getCountry() == "US") {
             $UK_word = $word_match->getUKWords();
+        } else {
             $US_word = $word_match->getUSWords();
         }
         return $app["twig"]->render("search.html.twig", array("output" => $output, "UK_word" => $UK_word, "US_word" => $US_word, 'word_match'=>$word_match));
@@ -64,14 +63,14 @@
         $us_definition = $_POST['definition'];
         $us_example = $_POST['example'];
         $us_region = $_POST['us_region'];
-        $new_word = new US_word($us_word, $us_definition, $us_example, $us_region);
+        $new_word = new US_word($us_word, $us_definition, $us_example, $us_region, $country = US);
         $new_word->save();
     //
         $uk_word = $_POST['uk_word'];
         $uk_definition = $_POST['uk_definition'];
         $uk_example = $_POST['uk_example'];
         $uk_region = $_POST['uk_region'];
-        $new_uk_word = new UK_word($uk_word, $uk_definition, $uk_example, $uk_region);
+        $new_uk_word = new UK_word($uk_word, $uk_definition, $uk_example, $uk_region, $country = UK);
         $new_uk_word->save();
 
         $new_uk_word->addUSWord($new_word->getId());
