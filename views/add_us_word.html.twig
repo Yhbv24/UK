@@ -8,9 +8,8 @@
     <body>
 
         <div class="container">
-            <h1 class="jumbotron">
-                Add your own word!
-            </h1>
+            <h1 class="jumbotron">Add your own word!</h1>
+
             <form action="/add_US_word" method="post" class="form-group">
 
                 <div class="row">
@@ -71,20 +70,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="center">
-                            <button type="submit" class="btn btn-sm">Add Word</button><br /><br />
+                            <a href="/"><button type="button" class="btn btn-sm">Home</button></a>
+                            <button type="submit" class="btn btn-sm">Add Word</button>
                         </div>
                     </div>
                 </div>
-
             </form>
-
-            <form method="get" action="/">
-                <div class="center">
-                    <button type="submit" class="btn btn-sm">Home</button>
-                </div>
-            </form>
-
         </div>
-
     </body>
 </html>

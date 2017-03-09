@@ -1,5 +1,9 @@
-.center {
+.center { /* Anything put in this div will center the element(s) */
     text-align: center;
+}
+
+.jumbotron {
+    background-color: none;
 }
 
 label {
@@ -7,29 +11,33 @@ label {
     line-height: 1.5em;
 }
 
-a:hover {
-    text-decoration: none;
-    color: red;
-    transition: .3s;
-}
-
-
-svg {
-    position: absolute;/*max-width: 100%;*/
-    height: auto;
-    width: 100%
-    top:400px;
-    z-index: -1;
-}
-
-#US-ID {
-    background-color: black;
-}
-
-#map {
+#map { /* Map template for API */
     width: 100%;
     height: 400px;
     background-color: grey;
     border: 1px solid black;
     border-radius: 2px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+a:focus {
+    color: #333;
+}
+
+#search-bar {
+    display: none;
+}
+
+body {
+    background-image: url(/img/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
