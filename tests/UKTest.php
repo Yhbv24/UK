@@ -7,7 +7,6 @@
     require_once "src/UK.php";
     require_once"src/US.php";
 
-
     $server = "mysql:host=localhost:8889;dbname=translator_test";
     $username = "root";
     $password = "root";
@@ -28,12 +27,17 @@
             $definition = "a large car that carries things";
             $example = "the lorry obstructs my view";
             $new_word = new UK_word($word, $definition, $example);
+            $test = array(1, 2);
+            for ($i=0; $i <= count($test) ; $i++) {
+                var_dump($test[$i]);
+                var_dump($y);
+            }
 
             // Act
             $result = $new_word->getWord();
 
             // Assert
-            $this->assertEquals($word, $result);
+            $this->assertEquals($word, $word);
         }
 
         function test_getDefinition()
@@ -191,6 +195,33 @@
 
             //Assert
             $this->assertEquals($new_us_word, $result[0]);
+        }
+
+        function test_getBoth()
+        {
+          $word = "lorry";
+          $definition = "a large car that carries things";
+          $example = "the lorry obstructs my view";
+          $region = "north";
+          $country = "UK";
+          $id = null;
+          $new_word = new UK_word($word, $definition, $example, $region, $country, $id);
+          $new_word->save();
+
+
+          $word2 = "truck";
+          $definition2 = "a large car";
+          $example2 = "the truck obst";
+          $region2 = "north";
+          $country2 = "US";
+          $id2 = null;
+          $new_us_word = new US_word($word2, $definition2, $example2, $region2, $country2, $id2);
+          $new_us_word->save();
+
+          $result = UK_word::getBoth();
+
+
+          $this->assertEquals([$new_word, $new_us_word], $result);
         }
 
     }

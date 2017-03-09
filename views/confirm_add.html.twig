@@ -4,7 +4,7 @@
         <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/css/styles.css" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
-        <title></title>
+        <title>Add Word</title>
     </head>
     <body>
 <div class="container">
@@ -39,6 +39,8 @@
                             </tr>
                         </tbody>
                     </table>
+            {% else %}
+            <h4>Your word already exists in our database!</h4>
             {% endif %}
         </div>
 
