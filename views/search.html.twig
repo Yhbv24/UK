@@ -50,7 +50,7 @@
                             </table>
 
                             {% if word.getRegion == "Northern Ireland" %}
-                                <div id="map">
+                                {<div id="map">
                                     <script> // Displays map with line between US and UK
                                         function initMap() {
                                             var northern_ireland = {lat: 54.7877, lng: -6.4923};
@@ -85,7 +85,7 @@
                                     </script>
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
-                                </div><br>
+                                </div><br>}
                             {% elseif word.getRegion == "Scotland" %}
                                 <div id="map">
                                     <script> // Displays map with line between US and UK
@@ -275,7 +275,7 @@
                                 <div id="map">
                                     <script> // Displays map with line between US and UK
                                         function initMap() {
-                                            var midlands = {lat: 52.4862, lng: -1.8904;
+                                            var midlands = {lat: 52.4862, lng: -1.8904};
                                             var us = {lat: 37.0902, lng: -95.7129};
                                             var map_center = {lat: 47.838971, lng: -48.339844};
                                             var map = new google.maps.Map(document.getElementById("map"), {
@@ -296,6 +296,80 @@
                                                 ];
                                             var connector = new google.maps.Polyline({
                                                 path: us_midlands_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "Yorkshire" %}
+                                <div id="map">
+                                    <script> // Displays map with line between US and UK
+                                        function initMap() {
+                                            var yorkshire = {lat: 53.7306, lng: -1.2345};
+                                            var us = {lat: 37.0902, lng: -95.7129};
+                                            var map_center = {lat: 47.838971, lng: -48.339844};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 2,
+                                                center: map_center
+                                            });
+                                            var us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var yorkshire_marker = new google.maps.Marker({
+                                                position: yorkshire,
+                                                map: map
+                                            });
+                                            var us_yorkshire_coordinates = [
+                                                {lat: 53.7306, lng: -1.2345},
+                                                {lat: 37.0902, lng: -95.7129},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: us_yorkshire_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "UK" %}
+                                <div id="map">
+                                    <script> // Displays map with line between US and UK
+                                        function initMap() {
+                                            var uk = {lat: 55.3781, lng: -3.4360};
+                                            var us = {lat: 37.0902, lng: -95.7129};
+                                            var map_center = {lat: 47.838971, lng: -48.339844};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 2,
+                                                center: map_center
+                                            });
+                                            var us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var uk_marker = new google.maps.Marker({
+                                                position: yorkshire,
+                                                map: map
+                                            });
+                                            var us_uk_coordinates = [
+                                                {lat: 55.3781, lng: -3.4360},
+                                                {lat: 37.0902, lng: -95.7129},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: us_uk_coordinates,
                                                 geodesic: true,
                                                 strokeColor: '#FF0000',
                                                 strokeOpacity: 1.0,
