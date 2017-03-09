@@ -26,16 +26,9 @@
         $words = Uk_word::getBoth();
         return $app["twig"]->render("index.html.twig", array('words' => $words));
     });
-    // $app->get("/search", function() use ($app) { // Route to the home page
-    //     $search_word = strtolower($_GET['search']);
-    //     $searched = SearchWord::apiCall($search_word);
-    //     var_dump($searched->getRegion);
-    //     return $app["twig"]->render("search.html.twig", array('words' => $words));
-    // });
 
     $app->get("/search", function() use ($app) { // Searches both US and UK tables despite name
         $search_word = strtolower($_GET['search']);
-        $api_saved = SearchWord::apiCall($search_word);
         $output = UK_word::search($search_word);
         $UK_word = null;
         $US_word = null;
@@ -58,13 +51,6 @@
         return $app["twig"]->render("search.html.twig", array("output" => $output, "UK_word" => $UK_word, "US_word" => $US_word, 'word_match'=>$word_match));
         });
 
-    // $app->post("/", function() use ($app) {
-    //     $search_word = $_POST["us_word"];
-    //     UK_word::searchUSWords($search_word);
-    //     $uk_words = UK_word::getAll();
-    //     $us_words = US_word::getAll();
-    //     return $app['twig']->render("index.html.twig", array("search" => $search_word, 'us_words'=>$us_words, 'uk_words'=>$uk_words));
-    // });
 
     $app->get('/add_US_word', function() use ($app) {
         return $app['twig']->render('add_us_word.html.twig');
@@ -85,7 +71,7 @@
         $new_uk_word = new UK_word($uk_word, $uk_definition, $uk_example, $uk_region, $country = "UK");
         $new_uk_word->save();
 
-        // $new_word->addUKWord($new_uk_word->getId());
+
 
         if ($new_uk_word->getId() != 0 && $new_word->getId() != 0) {
             $new_word->addUKWord($new_uk_word->getId());
