@@ -9,18 +9,27 @@
 
     <div class="container">
 
-        {{UK_word.getWord}}
+        <h1 class="jumbotron">{{ UK_word.getWord }}</h1>
 
-        {% if US_word is not empty %}
-        {% for word in US_word %}
-        {{word.getWord}}
-        {% endfor %}
-        {% endif %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                </tr>
+            </thead>
 
+            {% if US_word is not empty %}
+                {% for word in US_word %}
+                    <tbody>
+                        <tr>
+                            <td>{{ word.getWord }}</td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            {% endif %}
+        </table><br>
 
-
-
-        <a href="/"><button type="button">Home</button></a>
+        <a href="/"><button type="button" class="btn btn-sm">Home</button></a><br>
     </div>
 </body>
 </html>
