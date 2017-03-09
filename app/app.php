@@ -22,7 +22,8 @@
     // ***** Get routes *****
 
     $app->get("/", function() use ($app) { // Route to the home page
-        return $app["twig"]->render("index.html.twig");
+        $words = Uk_word::getBoth();
+        return $app["twig"]->render("index.html.twig", array('words' => $words));
     });
 
     $app->get("/search", function() use ($app) { // Searches both US and UK tables despite name
@@ -77,6 +78,14 @@
         $new_uk_word->save();
 
         $new_word->addUKWord($new_uk_word->getId());
+
+        if ($new_uk_word->getId() != 0 && $new_word->getId() != 0) {
+            $new_word->addUKWord($new_uk_word->getId());
+        }else {
+            $new_word = "";
+            $new_uk_word = "";
+        };
+
 
         return $app["twig"]->render("confirm_add.html.twig", array('new_us_word'=>$new_word, 'new_uk_word'=>$new_uk_word));
     });
