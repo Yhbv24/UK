@@ -1,3 +1,3 @@
 $(function() {
-    $(".container").fadeIn(1000);
+    $("#search-bar").fadeIn(1000);
 });
