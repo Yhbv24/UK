@@ -260,26 +260,6 @@
             $this->assertEquals($new_UK, $result[0]);
         }
 
-        function testUS_Exists()
-        {
-            $word = "suspenders";
-            $definition = "Elastic straps that hold up pants.";
-            $example = "He had suspenders holding up his pants instead of a belt.";
-            $country = "US";
-            $new_US = new US_word($word, $definition, $example, $country);
-            $new_US->save();
-
-            $word2 = "braces";
-            $definition2 = "Elastic straps that hold up trousers.";
-            $example2 = "He had braces holding up his trousers instead of a belt.";
-            $country2 = "US";
-            $new_US2 = new US_word($word2, $definition2, $example2, $country2);
-            $new_US2->save();
-
-            $result = $new_US->US_Exists();
-
-            $this->assertEquals(true, $result);
-        }
 
     }
 
