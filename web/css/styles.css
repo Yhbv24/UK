@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.jumbotron {
+    background-color: none;
+}
+
 label {
     font-size: .95em;
     line-height: 1.5em;
@@ -16,10 +20,11 @@ label {
 }
 
 a {
-    color: #333;
+    color: black;
 }
 
 a:hover {
+    color: #333;
     text-decoration: none;
 }
 
@@ -33,4 +38,6 @@ a:focus {
 
 body {
     background-image: url(/img/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
