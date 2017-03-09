@@ -12,11 +12,9 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, array(
 $result = curl_exec($curl);
 $exploded = explode("[",$result);
 // var_dump($result);
-// var_dump("exploded");
 $definition = $exploded[7];
-var_dump($definition);
-$exploded_result = explode("]",$definition);
-$var_dump($exploded_result);
+$definition = explode("]",$definition);
+var_dump($definition[0]);
 curl_close($curl);
 
 ?>
