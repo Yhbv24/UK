@@ -3,20 +3,23 @@
     <head>
         <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/css/styles.css" rel="stylesheet" type="text/css">
-        <title>Word List</title>
+        <title>felx</title>
     </head>
     <body>
 
     <div class="container">
-        <h1>UK words</h1>
-        {% for word in uk_words %}
-        <li><a href="/uk_link/{{word.getId}}">{{word.getWord}}</a></li>
-        {% endfor %}
 
-        <h1>US words</h1>
-        {% for word in us_words %}
-        <li><a href="/us_link/{{word.getId}}">{{word.getWord}}</a></li>
+        {{UK_word.getWord}}
+
+        {% if US_word is not empty %}
+        {% for word in US_word %}
+        {{word.getWord}}
         {% endfor %}
+        {% endif %}
+
+
+
+
         <a href="/"><button type="button">Home</button></a>
     </div>
 </body>

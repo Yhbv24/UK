@@ -115,7 +115,7 @@
                 $definition = $us_word['definition'];
                 $example = $us_word['example'];
                 $region = $us_word['region'];
-                $country = $word['country'];
+                $country = $us_word['country'];
                 $id = $us_word['id'];
                 $new_us_word = new US_word($word, $definition, $example, $region, $country, $id);
             }
@@ -154,7 +154,7 @@
         //
         // }
 
-        // SELECT word FROM uk_words WHERE EXISTS 
+        // SELECT word FROM uk_words WHERE EXISTS
 
     }
  ?>
