@@ -35,7 +35,6 @@
 
     $app->get("/search", function() use ($app) { // Searches both US and UK tables despite name
         $search_word = strtolower($_GET['search']);
-        $api_saved = SearchWord::apiCall($search_word);
         $output = UK_word::search($search_word);
         $UK_word = null;
         $US_word = null;

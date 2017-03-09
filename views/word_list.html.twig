@@ -8,16 +8,49 @@
     <body>
 
     <div class="container">
-        <h1>UK words</h1>
-        {% for word in uk_words %}
-        <li><a href="/uk_link/{{word.getId}}">{{word.getWord}}</a></li>
-        {% endfor %}
+        <div class="center">
+            <h1>UK words</h1>
+        </div>
 
-        <h1>US words</h1>
-        {% for word in us_words %}
-        <li><a href="/us_link/{{word.getId}}">{{word.getWord}}</a></li>
-        {% endfor %}
-        <a href="/"><button type="button">Home</button></a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>UK Words</th>
+                </tr>
+            </thead>
+
+            {% for word in uk_words %}
+                <tbody>
+                    <tr>
+                        <td><a href="/uk_link/{{ word.getId }}">{{ word.getWord }}</a></td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+
+        <div class="center">
+            <h1>US Words</h1>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>US Words</th>
+                </tr>
+            </thead>
+
+            {% for word in us_words %}
+                <tbody>
+                    <tr>
+                        <td><a href="/us_link/{{ word.getId }}">{{ word.getWord }}</a></td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+
+        <div class="center">
+            <a href="/"><button type="button" class="btn btn-sm">Home</button></a>
+        </div>
     </div>
 </body>
 </html>
