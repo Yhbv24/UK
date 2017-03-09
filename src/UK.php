@@ -128,17 +128,21 @@ class UK_word
         $GLOBALS['DB']->exec("DELETE FROM uk_words WHERE id = {$this->getId()};");
     }
 
-    static function find($search_id)
+    static function find($id)
     {
-        $found_word = null;
-        $words = UK_word::getAll();
-        foreach ($words as $word) {
-            $word_id = $this->getId();
-            if($word_id == $search_id){
-                $search_id = $found_word;
-            }
-            return $found_word;
+        $returned_UK_words = $GLOBALS['DB']->query("SELECT * FROM uk_words WHERE id={$id};");
+
+
+        foreach($returned_UK_words as $uk_word){
+            $word = $uk_word['word'];
+            $definition = $uk_word['definition'];
+            $example = $uk_word['example'];
+            $region = $uk_word['region'];
+            $country = $uk_word['country'];
+            $id = $uk_word['id'];
+            $new_uk_word = new UK_word($word, $definition, $example, $region, $country, $id);
         }
+        return $new_uk_word;
     }
 
     function addUSWord($us_id)
