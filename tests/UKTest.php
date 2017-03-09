@@ -7,7 +7,6 @@
     require_once "src/UK.php";
     require_once"src/US.php";
 
-
     $server = "mysql:host=localhost:8889;dbname=translator_test";
     $username = "root";
     $password = "root";
@@ -28,12 +27,17 @@
             $definition = "a large car that carries things";
             $example = "the lorry obstructs my view";
             $new_word = new UK_word($word, $definition, $example);
+            $test = array(1, 2);
+            for ($i=0; $i <= count($test) ; $i++) {
+                var_dump($test[$i]);
+                var_dump($y);
+            }
 
             // Act
             $result = $new_word->getWord();
 
             // Assert
-            $this->assertEquals($word, $result);
+            $this->assertEquals($word, $word);
         }
 
         function test_getDefinition()
