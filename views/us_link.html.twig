@@ -20,11 +20,11 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    {% if US_word is not empty %}
+                    {% if UK_word is not empty %}
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>US word</th>
+                                        <th>UK word</th>
                                         <th>Definition</th>
                                         <th>Example</th>
                                         <th>Region</th>
@@ -33,7 +33,7 @@
 
                                 <tbody>
                                     <tr>
-                                      {% for word in US_word %}
+                                      {% for word in UK_word %}
                                         <td>{{ word.getWord }}</td>
                                         <td>{{ word.getDefinition }}</td>
                                         <td>{{ word.getExample }}</td>
@@ -48,11 +48,11 @@
                 </div>
 
                 <div class="col-sm-6">
-                    {% if UK_word is not empty %}
+                    {% if US_word is not empty %}
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>UK Word</th>
+                                        <th>US Word</th>
                                         <th>Definition</th>
                                         <th>Example</th>
                                         <th>Region</th>
@@ -61,10 +61,10 @@
 
                                 <tbody>
                                     <tr>
-                                        <td>{{ UK_word.getWord }}</td>
-                                        <td>{{ UK_word.getDefinition }}</td>
-                                        <td>{{ UK_word.getExample }}</td>
-                                        <td>{{ UK_word.getRegion }}</td>
+                                        <td>{{ US_word.getWord }}</td>
+                                        <td>{{ US_word.getDefinition }}</td>
+                                        <td>{{ US_word.getExample }}</td>
+                                        <td>{{ US_word.getRegion }}</td>
                                     </tr>
                                 </tbody>
                             </table>

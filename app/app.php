@@ -128,5 +128,11 @@
         return $app["twig"]->render("uk_link.html.twig", array("UK_word" => $UK_word, "US_word" => $US_word));
     });
 
+    $app->get("/us_link/{id}", function($id) use($app) {
+        $US_word = US_word::find($id);
+        $UK_word =$US_word->getUKWords();
+        return $app["twig"]->render("us_link.html.twig", array("UK_word" => $UK_word, "US_word" => $US_word));
+    });
+
     return $app;
 ?>
