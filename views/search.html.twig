@@ -447,44 +447,7 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "US" %} <!-- Displays map centered on the US -->
-                                <div id="map">
-                                    <script>
-                                        function initMap() {
-                                            var uk = {lat: 55.3781, lng: -3.4360};
-                                            var us = {lat: 37.0902, lng: -95.7129};
-                                            var map_center = {lat: 47.126213, lng: -45};
-                                            var map = new google.maps.Map(document.getElementById("map"), {
-                                                zoom: 3,
-                                                center: map_center
-                                            });
-                                            var us_marker = new google.maps.Marker({
-                                                position: us,
-                                                map: map
-                                            });
-                                            var uk_marker = new google.maps.Marker({
-                                                position: uk,
-                                                map: map
-                                            });
-                                            var us_uk_coordinates = [
-                                                {lat: 55.3781, lng: -3.4360},
-                                                {lat: 37.0902, lng: -95.7129},
-                                                ];
-                                            var connector = new google.maps.Polyline({
-                                                path: us_uk_coordinates,
-                                                geodesic: true,
-                                                strokeColor: '#FF0000',
-                                                strokeOpacity: 1.0,
-                                                strokeWeight: 2
-                                            });
-
-                                            connector.setMap(map);
-                                        }
-                                    </script>
-                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
-                                    </script>
-                                </div><br>
-                            {% elseif word.getRegion == "Northeast" %} <!-- Displays map centered on the US -->
+                            {% elseif word.getRegion == "Northeast" %} <!-- Displays map centered on the NE US -->
                                 <div id="map">
                                     <script>
                                         function initMap() {
@@ -521,7 +484,7 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "South" %} <!-- Displays map centered on the US -->
+                            {% elseif word.getRegion == "South" %} <!-- Displays map centered on the Southern US -->
                                 <div id="map">
                                     <script>
                                         function initMap() {
@@ -558,7 +521,7 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "Southwest" %} <!-- Displays map centered on the US -->
+                            {% elseif word.getRegion == "Southwest" %} <!-- Displays map centered on the Southwestern US -->
                                 <div id="map">
                                     <script>
                                         function initMap() {
@@ -595,7 +558,7 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "Midwest" %} <!-- Displays map centered on the US -->
+                            {% elseif word.getRegion == "Midwest" %} <!-- Displays map centered on the Midwestern US -->
                                 <div id="map">
                                     <script>
                                         function initMap() {
@@ -620,6 +583,43 @@
                                                 ];
                                             var connector = new google.maps.Polyline({
                                                 path: midwest_us_uk_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "US" %} <!-- Displays map centered on the US -->
+                                <div id="map">
+                                    <script>
+                                        function initMap() {
+                                            var uk = {lat: 55.3781, lng: -3.4360};
+                                            var us = {lat: 39.8282, lng: -98.5795};
+                                            var map_center = {lat: 47.126213, lng: -45};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 3,
+                                                center: map_center
+                                            });
+                                            var us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var uk_marker = new google.maps.Marker({
+                                                position: uk,
+                                                map: map
+                                            });
+                                            var us_uk_coordinates = [
+                                                {lat: 55.3781, lng: -3.4360},
+                                                {lat: 39.8282, lng: -98.5795},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: us_uk_coordinates,
                                                 geodesic: true,
                                                 strokeColor: '#FF0000',
                                                 strokeOpacity: 1.0,
