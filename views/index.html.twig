@@ -14,7 +14,7 @@
                 <div class="col-sm-12">
                     <h1 class="jumbotron">Welcome to the Translator</h1>
                     <form action="/search" method="get" class="form-group">
-                      <input id="search-bar" type="text" name="search" list="search"  class="form-control" placeholder="Search" required>
+                      <input id="search-bar" type="text" name="search" list="search"  class="form-control" placeholder="Search" required><br>
                         <datalist id="search">
                             {% for word in words %}
                             <option value={{word.getWord}}>

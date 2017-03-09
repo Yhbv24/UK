@@ -16,17 +16,21 @@ label {
 }
 
 a {
-    color: #333333;
+    color: #333;
 }
 
 a:hover {
-    color: #333333;
+    text-decoration: none;
 }
 
 a:focus {
-    color: #333333;
+    color: #333;
 }
 
 #search-bar {
     display: none;
+}
+
+body {
+    background-image: url(/img/background.jpg);
 }
