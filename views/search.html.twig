@@ -49,9 +49,9 @@
                                 </tbody>
                             </table>
 
-                            {% if word.getRegion == "Northern Ireland" %}
-                                {<div id="map">
-                                    <script> // Displays map with line between US and UK
+                            {% if word.getRegion == "Northern Ireland" %} <!-- Displays map centered on Northern Ireland -->
+                                <div id="map">
+                                    <script>
                                         function initMap() {
                                             var northern_ireland = {lat: 54.7877, lng: -6.4923};
                                             var us = {lat: 37.0902, lng: -95.7129};
@@ -85,10 +85,10 @@
                                     </script>
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
-                                </div><br>}
-                            {% elseif word.getRegion == "Scotland" %}
+                                </div><br>
+                            {% elseif word.getRegion == "Scotland" %} <!-- Displays map centered on Scotland -->
                                 <div id="map">
-                                    <script> // Displays map with line between US and UK
+                                    <script>
                                         function initMap() {
                                             var scotland = {lat: 56.4907, lng: -4.2026};
                                             var us = {lat: 37.0902, lng: -95.7129};
@@ -123,9 +123,9 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "Wales" %}
+                            {% elseif word.getRegion == "Wales" %} <!-- Displays map centered on Wales -->
                                 <div id="map">
-                                    <script> // Displays map with line between US and UK
+                                    <script>
                                         function initMap() {
                                             var wales = {lat: 52.1307, lng: -3.7837};
                                             var us = {lat: 37.0902, lng: -95.7129};
@@ -160,9 +160,9 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "Southeast England" %}
+                            {% elseif word.getRegion == "Southeast England" %} <!-- Displays map centered on SE England -->
                                 <div id="map">
-                                    <script> // Displays map with line between US and UK
+                                    <script>
                                         function initMap() {
                                             var se_england = {lat: 51.3125, lng: -0.205};
                                             var us = {lat: 37.0902, lng: -95.7129};
@@ -197,9 +197,9 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "Southwest England" %}
+                            {% elseif word.getRegion == "Southwest England" %} <!-- Displays map centered on SW England -->
                                 <div id="map">
-                                    <script> // Displays map with line between US and UK
+                                    <script>
                                         function initMap() {
                                             var sw_england = {lat: 50.9421, lng: -2.6333};
                                             var us = {lat: 37.0902, lng: -95.7129};
@@ -234,9 +234,9 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "London" %}
+                            {% elseif word.getRegion == "London" %} <!-- Displays map centered on London -->
                                 <div id="map">
-                                    <script> // Displays map with line between US and UK
+                                    <script>
                                         function initMap() {
                                             var london = {lat: 51.5074, lng: -0.1278};
                                             var us = {lat: 37.0902, lng: -95.7129};
@@ -271,9 +271,9 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "Midlands" %}
+                            {% elseif word.getRegion == "Midlands" %} <!-- Displays map centered on Midlands -->
                                 <div id="map">
-                                    <script> // Displays map with line between US and UK
+                                    <script>
                                         function initMap() {
                                             var midlands = {lat: 52.4862, lng: -1.8904};
                                             var us = {lat: 37.0902, lng: -95.7129};
@@ -308,9 +308,9 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "Yorkshire" %}
+                            {% elseif word.getRegion == "Yorkshire" %} <!-- Displays map centered on Yorkshire -->
                                 <div id="map">
-                                    <script> // Displays map with line between US and UK
+                                    <script>
                                         function initMap() {
                                             var yorkshire = {lat: 53.7306, lng: -1.2345};
                                             var us = {lat: 37.0902, lng: -95.7129};
@@ -345,9 +345,9 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "UK" %}
+                            {% elseif word.getRegion == "UK" %} <!-- Displays map centered on the UK -->
                                 <div id="map">
-                                    <script> // Displays map with line between US and UK
+                                    <script>
                                         function initMap() {
                                             var uk = {lat: 55.3781, lng: -3.4360};
                                             var us = {lat: 37.0902, lng: -95.7129};
