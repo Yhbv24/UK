@@ -4,6 +4,7 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/UK.php";
     require_once __DIR__."/../src/US.php";
+    require_once __DIR__."/../src/api.php";
 
     $app = new Silex\Application();
 
@@ -25,9 +26,16 @@
         $words = Uk_word::getBoth();
         return $app["twig"]->render("index.html.twig", array('words' => $words));
     });
+    // $app->get("/search", function() use ($app) { // Route to the home page
+    //     $search_word = strtolower($_GET['search']);
+    //     $searched = SearchWord::apiCall($search_word);
+    //     var_dump($searched->getRegion);
+    //     return $app["twig"]->render("search.html.twig", array('words' => $words));
+    // });
 
     $app->get("/search", function() use ($app) { // Searches both US and UK tables despite name
-        $search_word = strtolower($_GET["search"]);
+        $search_word = strtolower($_GET['search']);
+        $api_saved = SearchWord::apiCall($search_word);
         $output = UK_word::search($search_word);
         $UK_word = null;
         $US_word = null;
@@ -50,13 +58,13 @@
         return $app["twig"]->render("search.html.twig", array("output" => $output, "UK_word" => $UK_word, "US_word" => $US_word, 'word_match'=>$word_match));
         });
 
-    $app->post("/", function() use ($app) {
-        $search_word = $_POST["us_word"];
-        UK_word::searchUSWords($search_word);
-        $uk_words = UK_word::getAll();
-        $us_words = US_word::getAll();
-        return $app['twig']->render("index.html.twig", array("search" => $search_word, 'us_words'=>$us_words, 'uk_words'=>$uk_words));
-    });
+    // $app->post("/", function() use ($app) {
+    //     $search_word = $_POST["us_word"];
+    //     UK_word::searchUSWords($search_word);
+    //     $uk_words = UK_word::getAll();
+    //     $us_words = US_word::getAll();
+    //     return $app['twig']->render("index.html.twig", array("search" => $search_word, 'us_words'=>$us_words, 'uk_words'=>$uk_words));
+    // });
 
     $app->get('/add_US_word', function() use ($app) {
         return $app['twig']->render('add_us_word.html.twig');
