@@ -4,6 +4,7 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/UK.php";
     require_once __DIR__."/../src/US.php";
+    require_once __DIR__."/../src/api.php";
 
     $app = new Silex\Application();
 
