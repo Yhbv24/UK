@@ -15,6 +15,10 @@ label {
     border-radius: 2px;
 }
 
+a {
+    color: #333333;
+}
+
 a:hover {
     color: #333333;
 }
@@ -23,7 +27,6 @@ a:focus {
     color: #333333;
 }
 
-a {
-    color: #333333;
-    text-decoration: none;
+#search-bar {
+    display: none;
 }

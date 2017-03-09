@@ -7,88 +7,90 @@
         <title>Add Word</title>
     </head>
     <body>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h1 class="jumbotron">Results</h1>
-                <div class="center">
-                    <h3>Your word has been added:</h3><br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="jumbotron">Results</h1>
+
+                    <div class="center">
+                        <h3>Your word has been added:</h3><br>
+                    </div>
                 </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-6">
-            {% if new_us_word is not empty %}
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Your Word</th>
-                                <th>Definition</th>
-                                <th>Example</th>
-                                <th>Region</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>{{ new_us_word.getWord }}</td>
-                                <td>{{ new_us_word.getDefinition }}</td>
-                                <td>{{ new_us_word.getExample }}</td>
-                                <td>{{ new_us_word.getRegion }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            {% else %}
-            <h4>Your word already exists in our database!</h4>
-            {% endif %}
-        </div>
-
-        <div class="col-sm-6">
-            {% if new_uk_word is not empty %}
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>UK Word</th>
-                                <th>Definition</th>
-                                <th>Example</th>
-                                <th>Region</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>{{ new_uk_word.getWord }}</td>
-                                <td>{{ new_uk_word.getDefinition }}</td>
-                                <td>{{ new_uk_word.getExample }}</td>
-                                <td>{{ new_uk_word.getRegion }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            {% endif %}
-        </div>
-
-    <div class="row">
-        <div class="col-sm-12">
-            <form action="/" method="get">
-                <div class="center">
-                    <button type="submit" class="btn btn-sm">Home</button>
-                </div>
-            </form>
-            </br>
-            <form action="/complete_list" method="get">
-                <div class="center">
-                    <button type="submit" class="btn btn-sm">View All</button>
-                </div>
-            </form>
-            </br>
-        </div>
-        <form action="/add_US_word" method="get">
-            <div class="center">
-                <button type="submit" class="btn btn-sm">Add US Word</button>
             </div>
-        </form>
-    </div>
-</div>
-</body>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    {% if new_us_word is not empty %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Your Word</th>
+                                        <th>Definition</th>
+                                        <th>Example</th>
+                                        <th>Region</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>{{ new_us_word.getWord }}</td>
+                                        <td>{{ new_us_word.getDefinition }}</td>
+                                        <td>{{ new_us_word.getExample }}</td>
+                                        <td>{{ new_us_word.getRegion }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    {% else %}
+                    <h4>Your word already exists in our database!</h4>
+                    {% endif %}
+                </div>
+
+                <div class="col-sm-6">
+                    {% if new_uk_word is not empty %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>UK Word</th>
+                                        <th>Definition</th>
+                                        <th>Example</th>
+                                        <th>Region</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>{{ new_uk_word.getWord }}</td>
+                                        <td>{{ new_uk_word.getDefinition }}</td>
+                                        <td>{{ new_uk_word.getExample }}</td>
+                                        <td>{{ new_uk_word.getRegion }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    {% endif %}
+                </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <form action="/" method="get">
+                        <div class="center">
+                            <button type="submit" class="btn btn-sm">Home</button>
+                        </div>
+                    </form>
+                    </br>
+                    <form action="/complete_list" method="get">
+                        <div class="center">
+                            <button type="submit" class="btn btn-sm">View All</button>
+                        </div>
+                    </form>
+                    </br>
+                </div>
+                
+                <form action="/add_US_word" method="get">
+                    <div class="center">
+                        <button type="submit" class="btn btn-sm">Add US Word</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>

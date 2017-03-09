@@ -426,7 +426,7 @@
                                                 map: map
                                             });
                                             var uk_marker = new google.maps.Marker({
-                                                position: yorkshire,
+                                                position: uk,
                                                 map: map
                                             });
                                             var us_uk_coordinates = [
@@ -435,6 +435,191 @@
                                                 ];
                                             var connector = new google.maps.Polyline({
                                                 path: us_uk_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "US" %} <!-- Displays map centered on the US -->
+                                <div id="map">
+                                    <script>
+                                        function initMap() {
+                                            var uk = {lat: 55.3781, lng: -3.4360};
+                                            var us = {lat: 37.0902, lng: -95.7129};
+                                            var map_center = {lat: 47.126213, lng: -45};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 3,
+                                                center: map_center
+                                            });
+                                            var us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var uk_marker = new google.maps.Marker({
+                                                position: uk,
+                                                map: map
+                                            });
+                                            var us_uk_coordinates = [
+                                                {lat: 55.3781, lng: -3.4360},
+                                                {lat: 37.0902, lng: -95.7129},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: us_uk_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "Northeast" %} <!-- Displays map centered on the US -->
+                                <div id="map">
+                                    <script>
+                                        function initMap() {
+                                            var uk = {lat: 55.3781, lng: -3.4360};
+                                            var ne_us = {lat: 43.0831, lng: -73.7846};
+                                            var map_center = {lat: 47.126213, lng: -45};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 3,
+                                                center: map_center
+                                            });
+                                            var ne_us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var uk_marker = new google.maps.Marker({
+                                                position: uk,
+                                                map: map
+                                            });
+                                            var ne_us_uk_coordinates = [
+                                                {lat: 55.3781, lng: -3.4360},
+                                                {lat: 43.0831, lng: -73.7846},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: ne_us_uk_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "South" %} <!-- Displays map centered on the US -->
+                                <div id="map">
+                                    <script>
+                                        function initMap() {
+                                            var uk = {lat: 55.3781, lng: -3.4360};
+                                            var south_us = {lat: 35.1495, lng: -90.0490};
+                                            var map_center = {lat: 47.126213, lng: -45};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 3,
+                                                center: map_center
+                                            });
+                                            var south_us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var uk_marker = new google.maps.Marker({
+                                                position: uk,
+                                                map: map
+                                            });
+                                            var south_us_uk_coordinates = [
+                                                {lat: 55.3781, lng: -3.4360},
+                                                {lat: 35.1495, lng: -90.0490},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: south_us_uk_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "Southwest" %} <!-- Displays map centered on the US -->
+                                <div id="map">
+                                    <script>
+                                        function initMap() {
+                                            var uk = {lat: 55.3781, lng: -3.4360};
+                                            var southwest_us = {lat: 37.0042, lng: -110.1735};
+                                            var map_center = {lat: 47.126213, lng: -45};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 3,
+                                                center: map_center
+                                            });
+                                            var southwest_us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var uk_marker = new google.maps.Marker({
+                                                position: uk,
+                                                map: map
+                                            });
+                                            var southwest_us_uk_coordinates = [
+                                                {lat: 55.3781, lng: -3.4360},
+                                                {lat: 37.0042, lng: -110.1735},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: southwest_us_uk_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "Midwest" %} <!-- Displays map centered on the US -->
+                                <div id="map">
+                                    <script>
+                                        function initMap() {
+                                            var uk = {lat: 55.3781, lng: -3.4360};
+                                            var midwest_us = {lat: 41.9779, lng: -91.6656};
+                                            var map_center = {lat: 47.126213, lng: -45};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 3,
+                                                center: map_center
+                                            });
+                                            var midwest_us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var uk_marker = new google.maps.Marker({
+                                                position: uk,
+                                                map: map
+                                            });
+                                            var midwest_us_uk_coordinates = [
+                                                {lat: 55.3781, lng: -3.4360},
+                                                {lat: 41.9779, lng: -91.6656},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: midwest_us_uk_coordinates,
                                                 geodesic: true,
                                                 strokeColor: '#FF0000',
                                                 strokeOpacity: 1.0,
