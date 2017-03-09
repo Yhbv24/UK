@@ -410,7 +410,7 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "UK" %} <!-- Displays map centered on the UK -->
+                            {% elseif word.getRegion == "National" %} <!-- Displays map centered on the UK -->
                                 <div id="map">
                                     <script>
                                         function initMap() {
@@ -459,7 +459,7 @@
                                                 center: map_center
                                             });
                                             var ne_us_marker = new google.maps.Marker({
-                                                position: us,
+                                                position: ne_us,
                                                 map: map
                                             });
                                             var uk_marker = new google.maps.Marker({
@@ -496,7 +496,7 @@
                                                 center: map_center
                                             });
                                             var south_us_marker = new google.maps.Marker({
-                                                position: us,
+                                                position: south_us,
                                                 map: map
                                             });
                                             var uk_marker = new google.maps.Marker({
@@ -533,7 +533,7 @@
                                                 center: map_center
                                             });
                                             var southwest_us_marker = new google.maps.Marker({
-                                                position: us,
+                                                position: southwest_us,
                                                 map: map
                                             });
                                             var uk_marker = new google.maps.Marker({
@@ -570,7 +570,7 @@
                                                 center: map_center
                                             });
                                             var midwest_us_marker = new google.maps.Marker({
-                                                position: us,
+                                                position: midwest_us,
                                                 map: map
                                             });
                                             var uk_marker = new google.maps.Marker({
@@ -595,7 +595,7 @@
                                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
                                     </script>
                                 </div><br>
-                            {% elseif word.getRegion == "US" %} <!-- Displays map centered on the US -->
+                            {% elseif word.getRegion == "National" %} <!-- Displays map centered on the US -->
                                 <div id="map">
                                     <script>
                                         function initMap() {
