@@ -127,7 +127,7 @@
                                 <div id="map">
                                     <script> // Displays map with line between US and UK
                                         function initMap() {
-                                            var wales = {lat: 56.4907, lng: -4.2026};
+                                            var wales = {lat: 52.1307, lng: -3.7837};
                                             var us = {lat: 37.0902, lng: -95.7129};
                                             var map_center = {lat: 47.838971, lng: -48.339844};
                                             var map = new google.maps.Map(document.getElementById("map"), {
@@ -143,7 +143,7 @@
                                                 map: map
                                             });
                                             var us_wa_coordinates = [
-                                                {lat: 56.4907, lng: -4.2026},
+                                                {lat: 52.1307, lng: -3.7837},
                                                 {lat: 37.0902, lng: -95.7129},
                                                 ];
                                             var connector = new google.maps.Polyline({
@@ -164,7 +164,7 @@
                                 <div id="map">
                                     <script> // Displays map with line between US and UK
                                         function initMap() {
-                                            var se_england = {lat: 56.4907, lng: -4.2026};
+                                            var se_england = {lat: 51.3125, lng: -0.205};
                                             var us = {lat: 37.0902, lng: -95.7129};
                                             var map_center = {lat: 47.838971, lng: -48.339844};
                                             var map = new google.maps.Map(document.getElementById("map"), {
@@ -180,11 +180,122 @@
                                                 map: map
                                             });
                                             var us_se_e_coordinates = [
-                                                {lat: 56.4907, lng: -4.2026},
+                                                {lat: 51.3125, lng: 0.205},
                                                 {lat: 37.0902, lng: -95.7129},
                                                 ];
                                             var connector = new google.maps.Polyline({
                                                 path: us_se_e_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "Southwest England" %}
+                                <div id="map">
+                                    <script> // Displays map with line between US and UK
+                                        function initMap() {
+                                            var sw_england = {lat: 50.9421, lng: -2.6333};
+                                            var us = {lat: 37.0902, lng: -95.7129};
+                                            var map_center = {lat: 47.838971, lng: -48.339844};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 2,
+                                                center: map_center
+                                            });
+                                            var us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var sw_e_marker = new google.maps.Marker({
+                                                position: sw_england,
+                                                map: map
+                                            });
+                                            var us_sw_e_coordinates = [
+                                                {lat: 50.9421, lng: -2.6333},
+                                                {lat: 37.0902, lng: -95.7129},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: us_sw_e_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "London" %}
+                                <div id="map">
+                                    <script> // Displays map with line between US and UK
+                                        function initMap() {
+                                            var london = {lat: 51.5074, lng: -0.1278};
+                                            var us = {lat: 37.0902, lng: -95.7129};
+                                            var map_center = {lat: 47.838971, lng: -48.339844};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 2,
+                                                center: map_center
+                                            });
+                                            var us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var london_marker = new google.maps.Marker({
+                                                position: london,
+                                                map: map
+                                            });
+                                            var us_london_coordinates = [
+                                                {lat: 51.5074, lng: -0.1278},
+                                                {lat: 37.0902, lng: -95.7129},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: us_london_coordinates,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+
+                                            connector.setMap(map);
+                                        }
+                                    </script>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBg7POcuWbLI8z7wzEvh6bxxn7nWwsCg&callback=initMap">
+                                    </script>
+                                </div><br>
+                            {% elseif word.getRegion == "Midlands" %}
+                                <div id="map">
+                                    <script> // Displays map with line between US and UK
+                                        function initMap() {
+                                            var midlands = {lat: 52.4862, lng: -1.8904;
+                                            var us = {lat: 37.0902, lng: -95.7129};
+                                            var map_center = {lat: 47.838971, lng: -48.339844};
+                                            var map = new google.maps.Map(document.getElementById("map"), {
+                                                zoom: 2,
+                                                center: map_center
+                                            });
+                                            var us_marker = new google.maps.Marker({
+                                                position: us,
+                                                map: map
+                                            });
+                                            var midlands_marker = new google.maps.Marker({
+                                                position: midlands,
+                                                map: map
+                                            });
+                                            var us_midlands_coordinates = [
+                                                {lat: 52.4862, lng: -1.8904},
+                                                {lat: 37.0902, lng: -95.7129},
+                                                ];
+                                            var connector = new google.maps.Polyline({
+                                                path: us_midlands_coordinates,
                                                 geodesic: true,
                                                 strokeColor: '#FF0000',
                                                 strokeOpacity: 1.0,
