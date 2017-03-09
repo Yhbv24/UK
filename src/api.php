@@ -17,7 +17,7 @@ class SearchWord
         $this->country = "UK";
         $this->id = $id;
     }
-    
+
     static function apiCall($search_word)
     {
     curl_init();
@@ -43,7 +43,7 @@ class SearchWord
     $GLOBALS['DB']->exec("INSERT INTO uk_words (word, definition, example, region, country) VALUES ('{$search_word}', '{$api_definition}', '{$api_example}', '{$api_region}', '{$country}');");
     $new_word->id = $GLOBALS['DB']->lastInsertId();
 
-    return $new_word;
+    // return $new_word;
     }
 }
 ?>
