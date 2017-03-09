@@ -17,8 +17,9 @@ Translator app that provides definitions for UK and US slang words.
 * Go to import tab
 * Install translator.zip.sql to access database structure
 * From project root, run > composer install --prefer-source --no-interaction
-* From web folder in project, Start PHP > php -S localhost:8000
-* In web browser open localhost:8000
+* Go to MAMP settings set MAMP>Preferences>Web Server>Document Root to UK/web
+* Restart MAMP server
+* open localhost:8888 in browser
 
 ## Known Bugs
 * No known bugs
@@ -64,6 +65,8 @@ no support
 * Bootstrap
 * Git
 * mySQL
+* Oxford English Dictionary API - `https://developer.oxforddictionaries.com/`
+* Google Maps API - `https://developers.google.com/maps/`
 
 ## Copyright (c)
 * 2017 By Sarah Leahy, Ash Laidlaw, Leah Sherell, Felix Oporto
